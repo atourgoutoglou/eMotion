@@ -30,6 +30,19 @@ pseudocode language basics, selection structures), written in Greek.
   </tr>
 </table>
 
+<table>
+  <tr>
+    <td width="68%" valign="top">
+      <b>Student progress</b><br/>
+      <img src="docs/screenshots/progress.png" alt="Student progress"/>
+    </td>
+    <td width="32%" valign="top">
+      <b>Study assistant chat</b><br/>
+      <img src="docs/screenshots/chatbox.png" alt="Study assistant chat"/>
+    </td>
+  </tr>
+</table>
+
 ### Admin dashboard
 ![Admin dashboard](docs/screenshots/admin-dashboard.png)
 
