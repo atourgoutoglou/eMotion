@@ -1,0 +1,190 @@
+﻿@model eMotion.Models.ViewModels.StudentProgressViewModel
+
+@{
+    ViewData["Title"] = "Η Πρόοδός μου";
+}
+
+@functions {
+    string ChapterTitle(string chapter)
+    {
+        return chapter switch
+        {
+            "Chapter1" => "Κεφάλαιο 1 - Ανάλυση Προβλήματος",
+            "Chapter2" => "Κεφάλαιο 2 - Βασικές Έννοιες Αλγορίθμων",
+            "Chapter3" => "Κεφάλαιο 3 - Βασικές Έννοιες Γλώσσας",
+            "Chapter4" => "Κεφάλαιο 4 - Δομή Επιλογής",
+            _ => chapter
+        };
+    }
+
+    string EmotionTitle(string emotion)
+    {
+        return emotion?.ToLower() switch
+        {
+            "anxious" => "Άγχος",
+            "neutral" => "Ουδέτερη κατάσταση",
+            "confident" => "Αυτοπεποίθηση",
+            "frustrated" => "Απογοήτευση",
+            "tired" => "Κούραση",
+            "idle" => "Αδράνεια",
+            "-" => "-",
+            _ => emotion ?? "-"
+        };
+    }
+}
+
+<section class="progress-page-shell">
+    <div class="container">
+
+        <div class="glass-panel p-4">
+
+            <h1 class="progress-page-title">
+                Η Πρόοδός μου
+            </h1>
+
+            <h3 class="text-white mb-3">
+                Ολοκλήρωση
+            </h3>
+
+            <div class="progress-track progress-track-lg">
+                <div class="progress-fill progress-fill-main"
+                     style="width:@(Model.OverallCompletionPercentage)%;"></div>
+            </div>
+
+            <div class="progress-main-note mt-2">
+                @Model.OverallCompletionPercentage% ολοκλήρωση
+            </div>
+
+            <div class="progress-summary-grid">
+                <div class="glass-card-soft p-4">
+                    <div class="progress-stat-label">Συνολική πρόοδος</div>
+                    <div class="progress-stat-value">@Model.OverallCompletionPercentage%</div>
+                </div>
+
+                <div class="glass-card-soft p-4">
+                    <div class="progress-stat-label">Κεφάλαια με πρόοδο</div>
+                    <div class="progress-stat-value">@Model.Chapters.Count(c => c.CompletionPercentage > 0)</div>
+                </div>
+
+                <div class="glass-card-soft p-4">
+                    <div class="progress-stat-label">Πρόσφατες βαθμολογίες</div>
+                    <div class="progress-stat-value">@Model.RecentGrades.Count()</div>
+                </div>
+            </div>
+
+            <div class="progress-section-block">
+                <h2 class="progress-section-heading">
+                    Αναλυτική Πρόοδος Κεφαλαίων
+                </h2>
+
+                <div class="chapter-progress-grid">
+                    @foreach (var chapter in Model.Chapters)
+                    {
+                        <div class="glass-card-soft hover-lift p-4">
+                            <div class="chapter-progress-top">
+                                <div class="chapter-progress-name">
+                                    @ChapterTitle(chapter.ChapterName)
+                                </div>
+
+                                <div class="chapter-progress-percent">
+                                    @chapter.CompletionPercentage%
+                                </div>
+                            </div>
+
+                            <div class="progress-track mb-3">
+                                <div class="progress-fill progress-fill-info"
+                                     style="width:@(chapter.CompletionPercentage)%;"></div>
+                            </div>
+
+                            <div class="chapter-progress-meta">
+                                <span class="pill-badge">Τελευταίος βαθμός: @chapter.LastScore</span>
+                                <span class="pill-badge">Καλύτερος βαθμός: @chapter.BestScore</span>
+                                <span class="pill-badge">Προσπάθειες: @chapter.Attempts</span>
+                                <span class="pill-badge">
+                                    Τελευταία κατάσταση:
+                                    @EmotionTitle(string.IsNullOrWhiteSpace(chapter.EmotionState) ? "-" : chapter.EmotionState)
+                                </span>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="progress-section-block">
+                <h2 class="progress-section-heading">
+                    Συναισθηματική Εικόνα Μαθητή
+                </h2>
+
+                @if (ViewBag.EmotionDistribution != null)
+                {
+                    <div class="emotion-stats-grid">
+                        @foreach (var item in ViewBag.EmotionDistribution)
+                        {
+                            <div class="glass-card-soft p-4">
+                                <div class="emotion-stat-name">
+                                    @EmotionTitle(item.Emotion)
+                                </div>
+
+                                <div class="emotion-stat-count">
+                                    @item.Count
+                                </div>
+
+                                <div class="emotion-stat-note">
+                                    καταγραφές
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <div class="glass-card-soft p-4">
+                        <div class="emotion-stat-name">Δεν υπάρχουν ακόμη δεδομένα</div>
+                        <div class="emotion-stat-note">
+                            Θα εμφανιστούν όταν υπάρξουν καταγραφές συναισθημάτων.
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <div class="progress-section-block">
+                <h2 class="progress-section-heading">
+                    Πρόσφατες Βαθμολογίες
+                </h2>
+
+                @if (Model.RecentGrades != null && Model.RecentGrades.Any())
+                {
+                    <div class="recent-grades-list">
+                        @foreach (var grade in Model.RecentGrades)
+                        {
+                            <div class="glass-card-soft p-4">
+                                <div class="recent-grade-top">
+                                    <div class="recent-grade-title">
+                                        @ChapterTitle(grade.ChapterName)
+                                    </div>
+
+                                    <div class="recent-grade-score">
+                                        Βαθμός: @grade.Score
+                                    </div>
+                                </div>
+
+                                <div class="recent-grade-date">
+                                    @grade.CreatedAt.ToLocalTime().ToString("dd/MM/yyyy HH:mm")
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <div class="glass-card-soft p-4">
+                        <div class="recent-grade-title">
+                            Δεν υπάρχουν ακόμη πρόσφατες βαθμολογίες
+                        </div>
+                    </div>
+                }
+            </div>
+
+        </div>
+    </div>
+</section>

@@ -1,0 +1,201 @@
+﻿@model eMotion.Models.ViewModels.TeacherDashboardViewModel
+
+@{
+    ViewData["Title"] = "Πίνακας Ελέγχου Εκπαιδευτικού";
+}
+
+<section class="teacher-dashboard-page py-5">
+    <div class="container">
+
+        <div class="teacher-glass-panel mb-5">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-8">
+
+                    <h1 class="teacher-hero-title mt-3">
+                        Πίνακας Ελέγχου Εκπαιδευτικού
+                    </h1>
+
+                    <p class="teacher-hero-text mt-3">
+                        Παρακολούθησε την πραγματική πρόοδο των μαθητών, εντόπισε δυσκολίες,
+                        παρατήρησε συναισθηματικές ενδείξεις και απέκτησε καθαρή εικόνα
+                        της συνολικής επίδοσης του μαθήματος.
+                    </p>
+
+                    <div class="teacher-hero-actions mt-4 d-flex flex-wrap gap-3">
+                        <a href="#teacher-students" class="btn btn-main">
+                            Προβολή Μαθητών
+                        </a>
+
+                        <a asp-controller="Teacher"
+                           asp-action="StudentQuestions"
+                           class="btn btn-main">
+                            Απορίες Μαθητών
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 text-center">
+                    <img src="~/images/teacher.png"
+                         class="img-fluid teacher-hero-img"
+                         alt="Teacher Dashboard">
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4 mb-5">
+            <div class="col-md-4">
+                <div class="teacher-glass-card text-center">
+                    <div class="teacher-stat-value">@Model.ActiveStudentsCount</div>
+                    <div class="teacher-stat-label">Ενεργοί Μαθητές</div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="teacher-glass-card text-center">
+                    <div class="teacher-stat-value">@Model.AverageClassProgress%</div>
+                    <div class="teacher-stat-label">Μέση Πρόοδος Τμήματος</div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="teacher-glass-card text-center">
+                    <div class="teacher-stat-value">@Model.ActiveChaptersCount</div>
+                    <div class="teacher-stat-label">Ενότητες με Δραστηριότητα</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="teacher-students" class="teacher-glass-panel">
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
+                <div>
+                    <h3 class="mb-1 text-white">
+                        Πρόοδος Μαθητών
+                    </h3>
+
+                    <p class="teacher-panel-subtitle mb-0">
+                        Πραγματικά δεδομένα από τις δραστηριότητες των μαθητών στο σύστημα.
+                    </p>
+                </div>
+            </div>
+
+            @if (Model.Students.Any())
+            {
+                <div class="table-responsive">
+                    <table class="table teacher-table align-middle">
+                        <thead>
+                            <tr>
+                                <th>Μαθητής</th>
+                                <th>Τελευταία Ενότητα</th>
+                                <th>Πρόοδος</th>
+                                <th>Καλύτερο Σκορ</th>
+                                <th>Τελευταίο Συναίσθημα</th>
+                                <th>Προσπάθειες</th>
+                                <th>Μήνυμα</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var student in Model.Students)
+                            {
+                                <tr>
+                                    <td class="fw-semibold">@student.StudentName</td>
+
+                                    <td>
+                                        @switch (student.CurrentChapter)
+                                        {
+                                            case "Chapter1":
+                                                @:Κεφάλαιο 1
+                                                break;
+
+                                            case "Chapter2":
+                                                @:Κεφάλαιο 2
+                                                break;
+
+                                            case "Chapter3":
+                                                @:Κεφάλαιο 3
+                                                break;
+
+                                            case "Chapter4":
+                                                @:Κεφάλαιο 4
+                                                break;
+
+                                            default:
+                                                @student.CurrentChapter
+                                                break;
+                                        }
+                                    </td>
+
+                                    <td>
+                                        <div class="teacher-progress-cell">
+                                            <div class="teacher-progress-track">
+                                                <div class="teacher-progress-fill"
+                                                     style="width:@student.ProgressPercentage%"></div>
+                                            </div>
+
+                                            <span>@student.ProgressPercentage%</span>
+                                        </div>
+                                    </td>
+
+                                    <td>@student.BestScoreDisplay</td>
+
+                                    <td>
+                                        <span class="teacher-emotion-pill">
+                                            @switch (student.LastEmotion)
+                                            {
+                                                case "Neutral":
+                                                    @:Ουδέτερο
+                                                    break;
+
+                                                case "Confident":
+                                                    @:Σίγουρος/η
+                                                    break;
+
+                                                case "Anxious":
+                                                    @:Αγχωμένος/η
+                                                    break;
+
+                                                case "Frustrated":
+                                                    @:Απογοητευμένος/η
+                                                    break;
+
+                                                case "Tired":
+                                                    @:Κουρασμένος/η
+                                                    break;
+
+                                                case "Idle":
+                                                    @:Αδρανής
+                                                    break;
+
+                                                default:
+                                                    @student.LastEmotion
+                                                    break;
+                                            }
+                                        </span>
+                                    </td>
+
+                                    <td>@student.TotalAttempts</td>
+
+                                    <td>
+                                        <a asp-controller="Teacher"
+                                           asp-action="SendMessage"
+                                           asp-route-studentId="@student.StudentId"
+                                           class="btn btn-sm btn-main">
+                                            Αποστολή
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <div class="teacher-glass-soft">
+                    Δεν υπάρχουν ακόμη καταγεγραμμένα δεδομένα μαθητών.
+                </div>
+            }
+        </div>
+
+    </div>
+</section>

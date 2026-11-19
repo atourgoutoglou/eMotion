@@ -1,0 +1,73 @@
+﻿@if (User.Identity?.IsAuthenticated == true && User.IsInRole("Student"))
+{
+    <div class="ai-chat-widget">
+
+        <button class="ai-chat-toggle"
+                type="button"
+                onclick="toggleAiChat()">
+
+            <img src="~/images/robot.png"
+                 alt="Βοηθός Μάθησης" />
+        </button>
+
+        <div class="ai-chat-panel" id="aiChatPanel">
+
+            <div class="ai-chat-header">
+                <div>
+                    <strong>Βοηθός Μάθησης eMotion</strong>
+                    <span>Υποστήριξη μαθητή σε πραγματικό χρόνο</span>
+                </div>
+
+                <button type="button"
+                        onclick="toggleAiChat()">
+                    ×
+                </button>
+            </div>
+
+            <div class="ai-chat-messages" id="aiChatMessages">
+
+                <div class="ai-message bot">
+                    Γεια σου!
+                    Είμαι ο βοηθός μάθησης της πλατφόρμας eMotion.
+                    Μπορώ να σε βοηθήσω με το μάθημα, την κατανόηση της θεωρίας
+                    και τη μελέτη σου.
+                </div>
+
+            </div>
+
+            <div class="ai-chat-suggestions">
+
+                <button type="button"
+                        onclick="quickAiQuestion('Δεν κατάλαβα το μάθημα')">
+                    Δεν κατάλαβα το μάθημα
+                </button>
+
+                <button type="button"
+                        onclick="quickAiQuestion('Χρειάζομαι βοήθεια στη θεωρία')">
+                    Βοήθεια στη θεωρία
+                </button>
+
+                <button type="button"
+                        onclick="quickAiQuestion('Τι να διαβάσω τώρα;')">
+                    Τι να διαβάσω τώρα;
+                </button>
+
+            </div>
+
+            <div class="ai-chat-input-row">
+
+                <input id="aiChatInput"
+                       type="text"
+                       placeholder="Γράψε εδώ την ερώτησή σου..."
+                       onkeydown="handleAiEnter(event)" />
+
+                <button type="button"
+                        onclick="sendAiMessage()">
+                    ➤
+                </button>
+
+            </div>
+
+        </div>
+    </div>
+}

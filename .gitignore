@@ -1,0 +1,37 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build output
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+[Ll]og/
+[Ll]ogs/
+
+# Rider / VS Code
+.idea/
+.vscode/
+
+# Local databases
+*.db
+*.db-shm
+*.db-wal
+*.mdf
+*.ldf
+
+# Secrets — never commit these
+appsettings.*.local.json
+*.env
+.env
+
+# Large lesson slides (PDF versions are kept in the repo)
+*.pptx
+
+# OS
+.DS_Store
+Thumbs.db

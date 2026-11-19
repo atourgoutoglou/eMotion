@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - eMotion</title>
+
+    <link rel="icon" type="image/png" href="~/favicon.png" asp-append-version="true" />
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="~/css/base.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/layout.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/student.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/teacher.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/identity.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/chapter.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/responsive.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/eMotion.styles.css" asp-append-version="true" />
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg custom-nav border-bottom-neon mb-3">
+            <div class="container-fluid">
+
+                <a class="navbar-brand logo-text"
+                   asp-area=""
+                   asp-controller="Home"
+                   asp-action="Index">
+                    e<span>Motion</span>
+                </a>
+
+                <button class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#mainNavbar"
+                        aria-controls="mainNavbar"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="mainNavbar">
+
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               asp-area=""
+                               asp-controller="Home"
+                               asp-action="Index">
+                                Αρχική
+                            </a>
+                        </li>
+
+                        @if (User.Identity != null && User.Identity.IsAuthenticated)
+                        {
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Admin" asp-action="Index">
+                                        Πίνακας Διαχειριστή
+                                    </a>
+                                </li>
+                            }
+
+                            @if (User.IsInRole("Teacher"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Teacher" asp-action="Index">
+                                        Πίνακας Καθηγητή
+                                    </a>
+                                </li>
+                            }
+
+                            @if (User.IsInRole("Student"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Student" asp-action="Index">
+                                        Τα Μαθήματά μου
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Student" asp-action="Progress">
+                                        Η Πρόοδός μου
+                                    </a>
+                                </li>
+                            }
+
+                            <li class="nav-item">
+                                <a class="nav-link"
+                                   asp-area="Identity"
+                                   asp-page="/Account/Manage/Index">
+                                    Ο Λογαριασμός μου
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="/#how-it-works">
+                                    Πώς λειτουργεί
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="/#features">
+                                    Πλεονεκτήματα
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="/#lessons">
+                                    Ενότητες
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="/#emotion-engine">
+                                    Συναισθηματική Ανάλυση
+                                </a>
+                            </li>
+                        }
+
+                    </ul>
+
+                    <partial name="_LoginPartial" />
+
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+
+    <partial name="_AiChatBox" />
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="~/js/ai-chat.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

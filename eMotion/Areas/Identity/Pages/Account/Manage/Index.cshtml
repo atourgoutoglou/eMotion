@@ -1,0 +1,56 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Το Προφίλ μου";
+    ViewData["ActivePage"] = ManageNavPages.Index;
+}
+
+<div class="manage-page-shell py-5">
+    <div class="container">
+        <div class="manage-page-card">
+            <div class="manage-page-header mb-4">
+                <h1 class="manage-page-title mt-3">Το Προφίλ μου</h1>
+                <p class="manage-page-subtitle mt-2">
+                    Διαχειρίσου τα στοιχεία του λογαριασμού σου μέσα από ένα καθαρό και σύγχρονο περιβάλλον.
+                </p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-3">
+                    <partial name="_ManageNav" />
+                </div>
+
+                <div class="col-lg-9">
+                    <div class="manage-content-card">
+                        <h2 class="manage-section-title mb-4">Στοιχεία Προφίλ</h2>
+
+                        <partial name="_StatusMessage" for="StatusMessage" />
+
+                        <form id="profile-form" method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                            <div class="mb-3">
+                                <label asp-for="Username" class="form-label manage-label">Όνομα Χρήστη</label>
+                                <input asp-for="Username" class="form-control manage-input" disabled />
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Input.PhoneNumber" class="form-label manage-label">Τηλέφωνο</label>
+                                <input asp-for="Input.PhoneNumber" class="form-control manage-input" />
+                                <span asp-validation-for="Input.PhoneNumber" class="text-danger small"></span>
+                            </div>
+
+                            <button id="update-profile-button" type="submit" class="btn btn-main px-4">
+                                Αποθήκευση Αλλαγών
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

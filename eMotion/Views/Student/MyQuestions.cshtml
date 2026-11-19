@@ -1,0 +1,155 @@
+﻿@model List<eMotion.Models.StudentQuestion>
+
+@{
+    ViewData["Title"] = "Οι Απορίες μου";
+}
+
+<section class="student-page-shell questions-page-shell py-5">
+    <div class="container">
+
+        <div class="glass-panel questions-premium-hero mb-5 p-5">
+
+            <h1 class="course-hero-title questions-hero-title mt-3">
+                Οι Απορίες μου
+            </h1>
+
+            <p class="course-hero-text mt-3">
+                Στείλε απορία στον καθηγητή σου σχετικά με τη θεωρία, τα κουίζ ή την πρόοδό σου.
+            </p>
+        </div>
+
+        @if (TempData["Success"] != null)
+        {
+            <div class="alert alert-success">
+                @TempData["Success"]
+            </div>
+        }
+
+        @if (TempData["Error"] != null)
+        {
+            <div class="alert alert-danger">
+                @TempData["Error"]
+            </div>
+        }
+
+        <div class="glass-panel questions-form-card mb-5 p-4">
+            <div class="questions-section-head">
+                <div class="questions-icon">✦</div>
+
+                <div>
+                    <h2 class="section-title mb-1">
+                        Νέα απορία
+                    </h2>
+
+                    <p class="section-text mb-0">
+                        Επίλεξε κεφάλαιο και γράψε με σαφήνεια τι σε δυσκόλεψε.
+                    </p>
+                </div>
+            </div>
+
+            <form asp-controller="Student"
+                  asp-action="SendQuestion"
+                  method="post"
+                  class="mt-4">
+
+                @Html.AntiForgeryToken()
+
+                <div class="row g-4">
+                    <div class="col-lg-4">
+                        <label class="form-label questions-label">
+                            Κεφάλαιο
+                        </label>
+
+                        <select name="chapter"
+                                class="form-select questions-input"
+                                required>
+                            <option value="">Επίλεξε κεφάλαιο</option>
+                            <option value="Κεφάλαιο 1 – Ανάλυση Προβλήματος">Κεφάλαιο 1 – Ανάλυση Προβλήματος</option>
+                            <option value="Κεφάλαιο 2 – Βασικές Έννοιες Αλγορίθμων">Κεφάλαιο 2 – Βασικές Έννοιες Αλγορίθμων</option>
+                            <option value="Κεφάλαιο 3 – Βασικές Έννοιες ΓΛΩΣΣΑΣ">Κεφάλαιο 3 – Βασικές Έννοιες ΓΛΩΣΣΑΣ</option>
+                            <option value="Κεφάλαιο 4 – Δομή Επιλογής">Κεφάλαιο 4 – Δομή Επιλογής</option>
+                        </select>
+                    </div>
+
+                    <div class="col-lg-8">
+                        <label class="form-label questions-label">
+                            Η απορία σου
+                        </label>
+
+                        <textarea name="message"
+                                  class="form-control questions-input questions-textarea"
+                                  rows="6"
+                                  maxlength="1000"
+                                  placeholder="Γράψε εδώ την απορία σου..."
+                                  required></textarea>
+                    </div>
+                </div>
+
+                <button type="submit"
+                        class="btn btn-main student-main-btn questions-submit-btn mt-4">
+                    Αποστολή απορίας
+                </button>
+            </form>
+        </div>
+
+        <div class="questions-history-head mb-4">
+            <h2 class="section-title mt-2 mb-1">
+                Ιστορικό αποριών
+            </h2>
+
+            <p class="section-text mb-0">
+                Εδώ εμφανίζονται οι απορίες που έχεις στείλει και οι απαντήσεις του καθηγητή.
+            </p>
+        </div>
+
+        @if (!Model.Any())
+        {
+            <div class="glass-card-soft questions-empty-card p-4">
+                Δεν έχεις στείλει ακόμα κάποια απορία.
+            </div>
+        }
+        else
+        {
+            <div class="questions-list">
+                @foreach (var question in Model)
+                {
+                    <div class="glass-card hover-lift p-4">
+                        <div class="questions-message-top">
+                            <div>
+                                <h4>@question.Chapter</h4>
+                                <span>@question.CreatedAt.ToString("dd/MM/yyyy HH:mm")</span>
+                            </div>
+
+                            @if (question.IsAnswered)
+                            {
+                                <span class="question-status answered">
+                                    Απαντήθηκε
+                                </span>
+                            }
+                            else
+                            {
+                                <span class="question-status pending">
+                                    Σε αναμονή
+                                </span>
+                            }
+                        </div>
+
+                        <div class="question-bubble student-question-bubble">
+                            <strong>Η απορία σου</strong>
+                            <p>@question.Message</p>
+                        </div>
+
+                        @if (question.IsAnswered)
+                        {
+                            <div class="question-bubble teacher-reply-bubble">
+                                <strong>Απάντηση καθηγητή</strong>
+                                <p>@question.TeacherReply</p>
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+        }
+
+    </div>
+</section>

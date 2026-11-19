@@ -1,0 +1,60 @@
+﻿@page
+@model PersonalDataModel
+@{
+    ViewData["Title"] = "Προσωπικά Δεδομένα";
+    ViewData["ActivePage"] = ManageNavPages.PersonalData;
+}
+
+<div class="manage-page-shell py-5">
+    <div class="container">
+        <div class="manage-page-card">
+
+            <div class="manage-page-header mb-4">
+                <span class="student-badge">Privacy</span>
+                <h1 class="manage-page-title mt-3">Προσωπικά Δεδομένα</h1>
+
+                <p class="manage-page-subtitle mt-2">
+                    Διαχειρίσου ή κατέβασε τα προσωπικά δεδομένα του λογαριασμού σου.
+                </p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-3">
+                    <partial name="_ManageNav" />
+                </div>
+
+                <div class="col-lg-9">
+                    <div class="manage-content-card">
+
+                        <h2 class="manage-section-title mb-4">
+                            Διαχείριση Δεδομένων
+                        </h2>
+
+                        <div class="completion-alert mb-4">
+                            Η διαγραφή λογαριασμού είναι μόνιμη και δεν μπορεί να αναιρεθεί.
+                        </div>
+
+                        <form id="download-data"
+                              asp-page="DownloadPersonalData"
+                              method="post"
+                              class="mb-3">
+
+                            <button class="btn btn-main px-4"
+                                    type="submit">
+                                Λήψη Δεδομένων
+                            </button>
+                        </form>
+
+                        <a id="delete"
+                           asp-page="DeletePersonalData"
+                           class="btn btn-danger px-4">
+                            Διαγραφή Λογαριασμού
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

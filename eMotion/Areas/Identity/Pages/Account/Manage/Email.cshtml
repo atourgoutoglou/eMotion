@@ -1,0 +1,85 @@
+﻿@page
+@model EmailModel
+@{
+    ViewData["Title"] = "Διαχείριση Email";
+    ViewData["ActivePage"] = ManageNavPages.Email;
+}
+
+<div class="manage-page-shell py-5">
+    <div class="container">
+        <div class="manage-page-card">
+
+            <div class="manage-page-header mb-4">
+                <h1 class="manage-page-title mt-3">Διαχείριση Email</h1>
+                <p class="manage-page-subtitle mt-2">
+                    Δες ή άλλαξε τη διεύθυνση email που είναι συνδεδεμένη με τον λογαριασμό σου.
+                </p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-3">
+                    <partial name="_ManageNav" />
+                </div>
+
+                <div class="col-lg-9">
+                    <div class="manage-content-card">
+                        <h2 class="manage-section-title mb-4">Στοιχεία Email</h2>
+
+                        <partial name="_StatusMessage" for="StatusMessage" />
+
+                        <form id="email-form" method="post">
+                            <div asp-validation-summary="All" class="text-danger mb-3" role="alert"></div>
+
+                            <div class="mb-3">
+                                <label asp-for="Email" class="form-label manage-label">Τρέχον Email</label>
+
+                                <div class="d-flex gap-2 align-items-center">
+                                    <input asp-for="Email"
+                                           class="form-control manage-input"
+                                           disabled />
+
+                                    @if (Model.IsEmailConfirmed)
+                                    {
+                                        <span class="teacher-emotion-pill">Επιβεβαιωμένο</span>
+                                    }
+                                </div>
+
+                                @if (!Model.IsEmailConfirmed)
+                                {
+                                    <button id="email-verification"
+                                            type="submit"
+                                            asp-page-handler="SendVerificationEmail"
+                                            class="btn btn-outline-light chapter-secondary-btn mt-3">
+                                        Αποστολή email επιβεβαίωσης
+                                    </button>
+                                }
+                            </div>
+
+                            <div class="mb-4">
+                                <label asp-for="Input.NewEmail" class="form-label manage-label">Νέο Email</label>
+                                <input asp-for="Input.NewEmail"
+                                       class="form-control manage-input"
+                                       autocomplete="email"
+                                       aria-required="true"
+                                       placeholder="Πληκτρολόγησε νέο email" />
+                                <span asp-validation-for="Input.NewEmail" class="text-danger small"></span>
+                            </div>
+
+                            <button id="change-email-button"
+                                    type="submit"
+                                    asp-page-handler="ChangeEmail"
+                                    class="btn btn-main px-4">
+                                Αλλαγή Email
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

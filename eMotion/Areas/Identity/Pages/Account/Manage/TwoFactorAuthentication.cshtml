@@ -1,0 +1,161 @@
+﻿@page
+@using Microsoft.AspNetCore.Http.Features
+@model TwoFactorAuthenticationModel
+@{
+    ViewData["Title"] = "Δύο Βήματα Ταυτοποίησης";
+    ViewData["ActivePage"] = ManageNavPages.TwoFactorAuthentication;
+}
+
+<div class="manage-page-shell py-5">
+    <div class="container">
+        <div class="manage-page-card">
+
+            <div class="manage-page-header mb-4">
+                <span class="student-badge">Security</span>
+
+                <h1 class="manage-page-title mt-3">
+                    Δύο Βήματα Ταυτοποίησης
+                </h1>
+
+                <p class="manage-page-subtitle mt-2">
+                    Ενίσχυσε την ασφάλεια του λογαριασμού σου χρησιμοποιώντας εφαρμογή ταυτοποίησης.
+                </p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-3">
+                    <partial name="_ManageNav" />
+                </div>
+
+                <div class="col-lg-9">
+                    <div class="manage-content-card">
+
+                        <h2 class="manage-section-title mb-4">
+                            Ρυθμίσεις Ασφάλειας
+                        </h2>
+
+                        <partial name="_StatusMessage" for="StatusMessage" />
+
+                        @{
+                            var consentFeature = HttpContext.Features.Get<ITrackingConsentFeature>();
+                        }
+
+                        @if (consentFeature?.CanTrack ?? true)
+                        {
+                            @if (Model.Is2faEnabled)
+                            {
+                                if (Model.RecoveryCodesLeft == 0)
+                                {
+                                    <div class="alert alert-danger">
+                                        <strong>Δεν υπάρχουν διαθέσιμοι κωδικοί ανάκτησης.</strong>
+                                        <p class="mb-0">
+                                            Πρέπει να δημιουργήσεις νέους κωδικούς ανάκτησης για να μπορείς να συνδεθείς αν χάσεις την πρόσβαση στην εφαρμογή ταυτοποίησης.
+                                        </p>
+                                    </div>
+                                }
+                                else if (Model.RecoveryCodesLeft == 1)
+                                {
+                                    <div class="alert alert-danger">
+                                        <strong>Έχεις μόνο 1 κωδικό ανάκτησης.</strong>
+                                        <p class="mb-0">
+                                            Συνιστάται να δημιουργήσεις νέο σύνολο κωδικών ανάκτησης.
+                                        </p>
+                                    </div>
+                                }
+                                else if (Model.RecoveryCodesLeft <= 3)
+                                {
+                                    <div class="alert alert-warning">
+                                        <strong>Έχεις @Model.RecoveryCodesLeft κωδικούς ανάκτησης.</strong>
+                                        <p class="mb-0">
+                                            Καλό είναι να δημιουργήσεις νέους κωδικούς ανάκτησης.
+                                        </p>
+                                    </div>
+                                }
+
+                                <div class="completion-alert mb-4">
+                                    Η ταυτοποίηση δύο βημάτων είναι ενεργή στον λογαριασμό σου.
+                                </div>
+
+                                <div class="d-flex flex-wrap gap-3 mb-4">
+                                    @if (Model.IsMachineRemembered)
+                                    {
+                                        <form method="post">
+                                            <button type="submit" class="btn btn-outline-light chapter-secondary-btn">
+                                                Ξέχασε αυτόν τον browser
+                                            </button>
+                                        </form>
+                                    }
+
+                                    <a asp-page="./Disable2fa"
+                                       class="btn btn-outline-light chapter-secondary-btn">
+                                        Απενεργοποίηση 2FA
+                                    </a>
+
+                                    <a asp-page="./GenerateRecoveryCodes"
+                                       class="btn btn-main">
+                                        Νέοι Κωδικοί Ανάκτησης
+                                    </a>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="completion-alert mb-4">
+                                    Η ταυτοποίηση δύο βημάτων δεν είναι ακόμη ενεργή.
+                                </div>
+                            }
+
+                            <h3 class="manage-section-title mt-4 mb-3">
+                                Εφαρμογή Ταυτοποίησης
+                            </h3>
+
+                            <p class="manage-page-subtitle mb-4">
+                                Μπορείς να χρησιμοποιήσεις εφαρμογή όπως Google Authenticator ή Microsoft Authenticator
+                                για μεγαλύτερη ασφάλεια κατά τη σύνδεση.
+                            </p>
+
+                            <div class="d-flex flex-wrap gap-3">
+                                @if (!Model.HasAuthenticator)
+                                {
+                                    <a id="enable-authenticator"
+                                       asp-page="./EnableAuthenticator"
+                                       class="btn btn-main">
+                                        Προσθήκη Εφαρμογής Ταυτοποίησης
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a id="enable-authenticator"
+                                       asp-page="./EnableAuthenticator"
+                                       class="btn btn-main">
+                                        Ρύθμιση Εφαρμογής Ταυτοποίησης
+                                    </a>
+
+                                    <a id="reset-authenticator"
+                                       asp-page="./ResetAuthenticator"
+                                       class="btn btn-outline-light chapter-secondary-btn">
+                                        Επαναφορά Εφαρμογής
+                                    </a>
+                                }
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="alert alert-danger">
+                                <strong>Δεν έχει γίνει αποδοχή της πολιτικής cookies.</strong>
+                                <p class="mb-0">
+                                    Πρέπει να αποδεχθείς την πολιτική απορρήτου και cookies πριν ενεργοποιήσεις την ταυτοποίηση δύο βημάτων.
+                                </p>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,167 @@
+﻿@model List<eMotion.Models.StudentQuestion>
+
+@{
+    ViewData["Title"] = "Απορίες Μαθητών";
+}
+
+<section class="teacher-questions-page py-5">
+    <div class="container">
+
+        <div class="teacher-questions-hero mb-5">
+
+            <h1 class="teacher-questions-title mt-3">
+                Απορίες Μαθητών
+            </h1>
+
+            <p class="teacher-questions-text mt-3">
+                Παρακολούθησε τις απορίες που στέλνουν οι μαθητές και απάντησε υποστηρικτικά,
+                ενισχύοντας την εξατομικευμένη μαθησιακή καθοδήγηση.
+            </p>
+
+        </div>
+
+        @if (TempData["Success"] != null)
+        {
+            <div class="alert alert-success">
+                @TempData["Success"]
+            </div>
+        }
+
+        @if (!Model.Any())
+        {
+            <div class="teacher-glass-card text-center p-5">
+                <div class="teacher-empty-icon">💬</div>
+
+                <h3 class="text-white fw-bold">
+                    Δεν υπάρχουν απορίες μαθητών
+                </h3>
+
+                <p class="teacher-panel-subtitle mb-0">
+                    Όταν κάποιος μαθητής στείλει απορία, θα εμφανιστεί εδώ για να μπορέσεις να απαντήσεις.
+                </p>
+            </div>
+        }
+        else
+        {
+            <div class="teacher-questions-summary mb-4">
+
+                <div class="teacher-glass-card">
+                    <span class="teacher-panel-subtitle d-block mb-2">
+                        Σύνολο αποριών
+                    </span>
+                    <strong class="teacher-stat-value">
+                        @Model.Count
+                    </strong>
+                </div>
+
+                <div class="teacher-glass-card">
+                    <span class="teacher-panel-subtitle d-block mb-2">
+                        Σε αναμονή
+                    </span>
+                    <strong class="teacher-stat-value">
+                        @Model.Count(q => !q.IsAnswered)
+                    </strong>
+                </div>
+
+                <div class="teacher-glass-card">
+                    <span class="teacher-panel-subtitle d-block mb-2">
+                        Απαντημένες
+                    </span>
+                    <strong class="teacher-stat-value">
+                        @Model.Count(q => q.IsAnswered)
+                    </strong>
+                </div>
+
+            </div>
+
+            <div class="teacher-questions-list">
+
+                @foreach (var question in Model)
+                {
+                    <div class="teacher-glass-card teacher-hover-lift">
+
+                        <div class="teacher-question-top">
+                            <div>
+                                <span class="teacher-question-chapter">
+                                    @question.Chapter
+                                </span>
+
+                                <h4>@question.StudentName</h4>
+
+                                <p>
+                                    @question.CreatedAt.ToString("dd/MM/yyyy HH:mm")
+                                </p>
+                            </div>
+
+                            @if (question.IsAnswered)
+                            {
+                                <span class="teacher-status answered">
+                                    Απαντήθηκε
+                                </span>
+                            }
+                            else
+                            {
+                                <span class="teacher-status pending">
+                                    Σε αναμονή
+                                </span>
+                            }
+                        </div>
+
+                        <div class="teacher-student-message">
+                            <strong>Απορία μαθητή</strong>
+                            <p>@question.Message</p>
+                        </div>
+
+                        @if (question.IsAnswered)
+                        {
+                            <div class="teacher-reply-box">
+                                <strong>Η απάντησή σου</strong>
+                                <p>@question.TeacherReply</p>
+
+                                @if (question.AnsweredAt != null)
+                                {
+                                    <span>
+                                        Απαντήθηκε στις @question.AnsweredAt.Value.ToString("dd/MM/yyyy HH:mm")
+                                    </span>
+                                }
+                            </div>
+                        }
+                        else
+                        {
+                            <form asp-controller="Teacher"
+                                  asp-action="ReplyToQuestion"
+                                  method="post"
+                                  class="teacher-reply-form mt-4">
+
+                                @Html.AntiForgeryToken()
+
+                                <input type="hidden"
+                                       name="id"
+                                       value="@question.Id" />
+
+                                <label class="form-label">
+                                    Απάντηση καθηγητή
+                                </label>
+
+                                <textarea name="teacherReply"
+                                          class="form-control teacher-reply-textarea"
+                                          rows="4"
+                                          placeholder="Γράψε εδώ την απάντησή σου..."
+                                          required></textarea>
+
+                                <button type="submit"
+                                        class="btn teacher-send-reply-btn mt-3">
+                                    Αποστολή απάντησης
+                                </button>
+
+                            </form>
+                        }
+
+                    </div>
+                }
+
+            </div>
+        }
+
+    </div>
+</section>

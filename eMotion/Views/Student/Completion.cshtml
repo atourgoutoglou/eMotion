@@ -1,0 +1,146 @@
+﻿@model eMotion.Models.ViewModels.StudentProgressViewModel
+
+@{
+    ViewData["Title"] = "Ολοκλήρωση Μαθήματος";
+
+    string ChapterTitle(string chapter) => chapter switch
+    {
+        "Chapter1" => "Κεφάλαιο 1 – Ανάλυση Προβλήματος",
+        "Chapter2" => "Κεφάλαιο 2 – Βασικές Έννοιες Αλγορίθμων",
+        "Chapter3" => "Κεφάλαιο 3 – Βασικές Έννοιες ΓΛΩΣΣΑΣ",
+        "Chapter4" => "Κεφάλαιο 4 – Δομή Επιλογής",
+        _ => chapter
+    };
+
+    string EmotionTitle(string emotion) => emotion switch
+    {
+        "Neutral" => "Ουδέτερο",
+        "Confident" => "Αυτοπεποίθηση",
+        "Frustrated" => "Απογοήτευση",
+        "Anxious" => "Άγχος",
+        "Tired" => "Κόπωση",
+        "Idle" => "Αδράνεια",
+        "-" => "Δεν υπάρχουν δεδομένα",
+        null => "Δεν υπάρχουν δεδομένα",
+        _ => emotion
+    };
+}
+
+<section class="student-page-shell py-5">
+    <div class="container">
+
+        <div class="glass-panel mb-5 p-5">
+            <span class="student-badge">
+                Τελική Αναφορά Μάθησης
+            </span>
+
+            <h1 class="completion-title mt-3">
+                Συγχαρητήρια! Ολοκλήρωσες όλα τα κεφάλαια.
+            </h1>
+
+            <p class="completion-subtitle">
+                Παρακάτω παρουσιάζεται η συνολική εικόνα της μαθησιακής σου πορείας,
+                η πρόοδός σου ανά κεφάλαιο και οι προτάσεις συνέχειας με βάση τη δραστηριότητά σου.
+            </p>
+        </div>
+
+        <div class="completion-stats-grid mb-5">
+            <div class="glass-card-soft completion-stat-card p-4">
+                <span>Συνολική πρόοδος</span>
+                <strong>@Model.OverallCompletionPercentage%</strong>
+            </div>
+
+            <div class="glass-card-soft completion-stat-card p-4">
+                <span>Ολοκληρωμένα κεφάλαια</span>
+                <strong>@Model.CompletedChaptersCount / @Model.TotalChaptersCount</strong>
+            </div>
+
+            <div class="glass-card-soft completion-stat-card p-4">
+                <span>Συνολικές προσπάθειες</span>
+                <strong>@Model.TotalAttempts</strong>
+            </div>
+
+            <div class="glass-card-soft completion-stat-card p-4">
+                <span>Κυρίαρχη κατάσταση</span>
+                <strong>@EmotionTitle(Model.DominantEmotion)</strong>
+            </div>
+        </div>
+
+        <div class="completion-section">
+            <h2>Αναλυτική εικόνα κεφαλαίων</h2>
+
+            <div class="completion-chapters-list">
+                @foreach (var chapter in Model.Chapters)
+                {
+                    <div class="glass-card-soft completion-chapter-row p-4">
+                        <div>
+                            <strong>@ChapterTitle(chapter.ChapterName)</strong>
+
+                            <span>
+                                Καλύτερη επίδοση: @chapter.BestScore |
+                                Προσπάθειες: @chapter.Attempts |
+                                Τελευταία κατάσταση: @EmotionTitle(chapter.EmotionState)
+                            </span>
+                        </div>
+
+                        <div class="completion-percent">
+                            @chapter.CompletionPercentage%
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="completion-section mt-5">
+            <h2>Συναισθηματική εικόνα</h2>
+
+            @if (Model.EmotionSummary != null && Model.EmotionSummary.Any())
+            {
+                <div class="completion-emotion-grid">
+                    @foreach (var item in Model.EmotionSummary)
+                    {
+                        <div class="glass-card-soft completion-emotion-card p-4">
+                            <strong>@EmotionTitle(item.Emotion)</strong>
+                            <span>@item.Count καταγραφές</span>
+                        </div>
+                    }
+                </div>
+            }
+            else
+            {
+                <div class="completion-alert">
+                    Δεν υπάρχουν ακόμη αρκετά δεδομένα συναισθηματικής ανάλυσης.
+                </div>
+            }
+        </div>
+
+        <div class="completion-section mt-5">
+            <h2>Προσωποποιημένες προτάσεις</h2>
+
+            <div class="completion-recommendations">
+                @foreach (var recommendation in Model.CompletionRecommendations)
+                {
+                    <div class="glass-card-soft completion-recommendation-card p-4">
+                        <h3>@recommendation.Title</h3>
+                        <p>@recommendation.Text</p>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="completion-actions mt-5">
+            <a asp-controller="Student"
+               asp-action="Progress"
+               class="btn btn-main student-main-btn">
+                Αναλυτική πρόοδος
+            </a>
+
+            <a asp-controller="Student"
+               asp-action="Index"
+               class="btn btn-outline-glass student-main-btn">
+                Επιστροφή στα μαθήματα
+            </a>
+        </div>
+
+    </div>
+</section>

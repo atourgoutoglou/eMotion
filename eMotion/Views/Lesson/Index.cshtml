@@ -1,0 +1,217 @@
+﻿@{
+    ViewData["Title"] = "Τα Μαθήματά μου";
+}
+
+<section class="student-dashboard py-5">
+    <div class="container">
+
+        <section class="student-hero mb-5">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-8">
+                    <span class="dashboard-tag">Student Dashboard</span>
+                    <h1 class="student-hero-title mt-3">
+                        Καλωσήρθες στο μάθημα Προγραμματισμού
+                    </h1>
+                    <p class="student-hero-text mt-3">
+                        Εξερεύνησε τις βασικές ενότητες, συνέχισε από εκεί που σταμάτησες
+                        και παρακολούθησε την πρόοδό σου μέσα από μια πιο οργανωμένη και
+                        υποστηρικτική εμπειρία μάθησης.
+                    </p>
+
+                    <div class="d-flex flex-wrap gap-3 mt-4">
+                        <a asp-controller="Student" asp-action="Chapter1" class="btn btn-main">
+                            Συνέχισε το Μάθημα
+                        </a>
+                        <a href="#chapters" class="btn btn-main">
+                            Δες τα Κεφάλαια
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 text-center">
+                    <div class="student-hero-illustration">
+                        <img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png"
+                             class="img-fluid floating-animation"
+                             alt="e-Motion Assistant" />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="dashboard-stats mb-5">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="stat-card">
+                        <span class="stat-label">Ολοκλήρωση</span>
+                        <h3 class="stat-value">68%</h3>
+                        <p class="stat-text">Συνολική πρόοδος μαθημάτων</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="stat-card">
+                        <span class="stat-label">Ενεργή Ενότητα</span>
+                        <h3 class="stat-value">Κεφάλαιο 2</h3>
+                        <p class="stat-text">Μεταβλητές και βασικές εντολές</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="stat-card">
+                        <span class="stat-label">Τελευταία Επίδοση</span>
+                        <h3 class="stat-value">18/20</h3>
+                        <p class="stat-text">Τεστ Προγραμματισμού</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="dashboard-panel mb-5">
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4">
+                <div>
+                    <span class="dashboard-tag">Learning Progress</span>
+                    <h2 class="dashboard-section-title mt-2 mb-1">Η Πρόοδός μου</h2>
+                    <p class="dashboard-section-text mb-0">
+                        Παρακολούθησε την πρόοδό σου στις βασικές ενότητες του μαθήματος.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row g-4 align-items-center">
+                <div class="col-lg-4 text-center">
+                    <div class="progress-circle-wrap">
+                        <div class="progress-circle">
+                            <div class="progress-circle-inner">
+                                <h2 class="mb-0">68%</h2>
+                                <small>ΟΛΟΚΛΗΡΩΣΗ</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-8">
+                    <div class="progress-item">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Ανάλυση Προβλήματος</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="progress progress-thin">
+                            <div class="progress-bar bg-success" style="width: 95%"></div>
+                        </div>
+                    </div>
+
+                    <div class="progress-item">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Βασικές Έννοιες Αλγορίθμων</span>
+                            <span>45%</span>
+                        </div>
+                        <div class="progress progress-thin">
+                            <div class="progress-bar bg-info" style="width: 45%"></div>
+                        </div>
+                    </div>
+
+                    <div class="progress-item">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Δομές Δεδομένων & Αλγόριθμοι</span>
+                            <span>25%</span>
+                        </div>
+                        <div class="progress progress-thin">
+                            <div class="progress-bar bg-warning" style="width: 25%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="chapters">
+            <div class="mb-4">
+                <span class="dashboard-tag">Course Content</span>
+                <h2 class="dashboard-section-title mt-2 mb-1">Κεφάλαια Μαθήματος</h2>
+                <p class="dashboard-section-text mb-0">
+                    Επίλεξε την ενότητα που θέλεις να μελετήσεις.
+                </p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="chapter-card-pro h-100">
+                        <div class="chapter-card-number">01</div>
+                        <h4 class="chapter-card-title">Ανάλυση Προβλήματος</h4>
+                        <p class="chapter-card-text">
+                            Κατανόηση προβλημάτων και μετατροπή τους σε διαδοχικά βήματα επίλυσης.
+                        </p>
+                        <a asp-controller="Student" asp-action="Chapter1" class="btn btn-outline-light chapter-btn">
+                            Άνοιγμα Κεφαλαίου
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="chapter-card-pro h-100">
+                        <div class="chapter-card-number">02</div>
+                        <h4 class="chapter-card-title">Βασικές Έννοιες Αλγορίθμων</h4>
+                        <p class="chapter-card-text">
+                            Μεταβλητές, εκφράσεις, βασικές εντολές και η θεμελιώδης λογική των αλγορίθμων.
+                        </p>
+                        <a asp-controller="Student" asp-action="Chapter2" class="btn btn-outline-light chapter-btn">
+                            Άνοιγμα Κεφαλαίου
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="chapter-card-pro h-100">
+                        <div class="chapter-card-number">03</div>
+                        <h4 class="chapter-card-title">Δομές Δεδομένων & Αλγόριθμοι</h4>
+                        <p class="chapter-card-text">
+                            Διαχείριση δεδομένων και σχεδιασμός πιο αποδοτικών λύσεων σε προβλήματα.
+                        </p>
+                        <a asp-controller="Student" asp-action="Chapter3" class="btn btn-outline-light chapter-btn">
+                            Άνοιγμα Κεφαλαίου
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="chapter-card-pro h-100">
+                        <div class="chapter-card-number">04</div>
+                        <h4 class="chapter-card-title">Επιλογή & Επανάληψη</h4>
+                        <p class="chapter-card-text">
+                            Δομές ελέγχου, λήψη αποφάσεων και επαναληπτικές διαδικασίες.
+                        </p>
+                        <a asp-controller="Student" asp-action="Chapter4" class="btn btn-outline-light chapter-btn">
+                            Άνοιγμα Κεφαλαίου
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="chapter-card-pro h-100">
+                        <div class="chapter-card-number">05</div>
+                        <h4 class="chapter-card-title">Πίνακες</h4>
+                        <p class="chapter-card-text">
+                            Οργάνωση και επεξεργασία πολλαπλών δεδομένων με χρήση πινάκων.
+                        </p>
+                        <a asp-controller="Student" asp-action="Chapter5" class="btn btn-outline-light chapter-btn">
+                            Άνοιγμα Κεφαλαίου
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="chapter-card-pro h-100">
+                        <div class="chapter-card-number">06</div>
+                        <h4 class="chapter-card-title">Υποπρογράμματα</h4>
+                        <p class="chapter-card-text">
+                            Διαδικασίες και συναρτήσεις για καλύτερη οργάνωση και επαναχρησιμοποίηση κώδικα.
+                        </p>
+                        <a asp-controller="Student" asp-action="Chapter6" class="btn btn-outline-light chapter-btn">
+                            Άνοιγμα Κεφαλαίου
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</section>

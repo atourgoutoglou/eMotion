@@ -1,0 +1,499 @@
+﻿@{
+    ViewData["Title"] = "Αρχική";
+}
+
+<div class="home-modern-page">
+    <section class="home-hero container py-5">
+        <div class="hero-shell">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+
+                    <h1 class="hero-display mt-4">
+                        Ένα <span>προσαρμοστικό</span> περιβάλλον <span>μάθησης</span> νέας γενιάς.
+                    </h1>
+
+                    <p class="hero-description mt-4">
+                        Μέσα από την ανάλυση της αλληλεπίδρασης του μαθητή με το εκπαιδευτικό υλικό,
+                        το <strong>eMotion</strong> προσαρμόζει δυναμικά τη μαθησιακή εμπειρία,
+                        ενισχύοντας τη συμμετοχή, την υποστήριξη και την αποτελεσματικότητα της μάθησης.
+                    </p>
+
+                    <div class="hero-actions mt-4 d-flex flex-wrap gap-3">
+                        @if (User.Identity?.IsAuthenticated ?? false)
+                        {
+                            <a asp-controller="Student" asp-action="Index" class="btn btn-main btn-lg px-4 py-3">
+                                Είσοδος στην Πλατφόρμα
+                            </a>
+
+                            <a asp-controller="Student" asp-action="Progress" class="btn btn-outline-glass btn-lg px-4 py-3">
+                                Δες την Πρόοδό σου
+                            </a>
+                        }
+                        else
+                        {
+                            <a asp-area="Identity" asp-page="/Account/Login" class="btn btn-main btn-lg px-4 py-3">
+                                Σύνδεση για να ξεκινήσεις
+                            </a>
+
+                            <a href="#how-it-works" class="btn btn-outline-glass btn-lg px-4 py-3">
+                                Τρόπος λειτουργίας
+                            </a>
+                        }
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="hero-visual-card">
+                        <div class="visual-orb orb-one"></div>
+                        <div class="visual-orb orb-two"></div>
+
+                        <div class="emotion-panel emotion-panel-main">
+                            <div class="panel-topline">Ζωντανή Ανάλυση Μαθητή</div>
+
+                            <div class="panel-row">
+                                <div>
+                                    <div class="panel-title">Συναισθηματική εκτίμηση</div>
+                                    <div class="panel-subtitle">
+                                        Υπολογισμός με βάση την επίδοση, τον χρόνο, την αδράνεια και τις αλλαγές απαντήσεων
+                                    </div>
+                                </div>
+
+                                <span class="status-chip">Ενεργό</span>
+                            </div>
+
+                            <div class="emotion-bars mt-4">
+                                <div class="emotion-bar-item">
+                                    <div class="emotion-bar-header">
+                                        <span>Αυτοπεποίθηση</span>
+                                        <span>82%</span>
+                                    </div>
+                                    <div class="emotion-track">
+                                        <div class="emotion-fill fill-interest"></div>
+                                    </div>
+                                </div>
+
+                                <div class="emotion-bar-item">
+                                    <div class="emotion-bar-header">
+                                        <span>Κόπωση</span>
+                                        <span>28%</span>
+                                    </div>
+                                    <div class="emotion-track">
+                                        <div class="emotion-fill fill-fatigue"></div>
+                                    </div>
+                                </div>
+
+                                <div class="emotion-bar-item">
+                                    <div class="emotion-bar-header">
+                                        <span>Απογοήτευση</span>
+                                        <span>36%</span>
+                                    </div>
+                                    <div class="emotion-track">
+                                        <div class="emotion-fill fill-frustration"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="floating-mini-card mini-left">
+                            <div class="mini-label">Προσαρμοστική ενέργεια</div>
+                            <strong>Προβολή υποστηρικτικής θεωρίας</strong>
+                            <p>Όταν ο μαθητής δυσκολεύεται, εμφανίζεται πιο απλή και καθοδηγητική εκδοχή του υλικού.</p>
+                        </div>
+
+                        <div class="floating-mini-card mini-right">
+                            <div class="mini-label">Ροή μαθήματος</div>
+                            <strong>Θεωρία • Υλικό • Κουίζ</strong>
+                            <p>Η πρόοδος υπολογίζεται με βάση τα βασικά βήματα κάθε κεφαλαίου.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="container py-5">
+        <div class="section-heading-wrap text-center mb-5">
+            <h2 class="section-title-modern">Πώς λειτουργεί το eMotion</h2>
+
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+                <article class="modern-feature-card h-100">
+                    <div class="feature-number">01</div>
+                    <h3>Καταγραφή Προόδου</h3>
+                    <p>
+                        Καταγράφονται βασικές ενέργειες του μαθητή, όπως η ανάγνωση της θεωρίας,
+                        η προβολή του σχολικού βιβλίου, οι απαντήσεις σε κουίζ, ο χρόνος μελέτης και η αλληλεπίδραση με το υλικό.
+                    </p>
+                </article>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <article class="modern-feature-card h-100">
+                    <div class="feature-number">02</div>
+                    <h3>Ανάλυση Δεδομένων</h3>
+                    <p>
+                        Τα δεδομένα αξιολογούνται με κανόνες που λαμβάνουν υπόψη τις σωστές και τις λανθασμένες απαντήσεις,
+                        τις αλλαγές των απαντήσεων, τον χρόνο αδράνειας, τον αριθμό προσπαθιών και την αυτοαναφορά συναισθήματος.
+                    </p>
+                </article>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <article class="modern-feature-card h-100">
+                    <div class="feature-number">03</div>
+                    <h3>Συναισθηματική Ανάλυση</h3>
+
+                    <p>
+                        Το σύστημα αναγνωρίζει ενδείξεις όπως αυτοπεποίθηση,
+                        δυσκολία, άγχος, κόπωση ή μειωμένη αλληλεπίδραση,
+                        αξιολογώντας τη συνολική μαθησιακή συμπεριφορά του μαθητή.
+                    </p>
+                </article>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <article class="modern-feature-card h-100">
+                    <div class="feature-number">04</div>
+                    <h3>Προσαρμογή Μαθησιακού Περιεχομένου</h3>
+                    <p>
+                        Ανάλογα την συναισθηματική κατάσταση του εκπαιδευόμενου,
+                        η πλατφόρμα μπορεί να εμφανίσει σύνοψη του μαθήματος,
+                        επιπλέον καθοδηγητική θεωρία, βοηθητικές υποδείξεις ή πιο απαιτητικές δραστηριότητες.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="container py-5">
+        <div class="row g-4 align-items-stretch">
+            <div class="col-lg-7">
+                <div class="glass-highlight-card h-100">
+                    <h2 class="section-title-modern text-start mt-3">
+                        Γιατί αυτή η πλατφόρμα ξεχωρίζει
+                    </h2>
+
+                    <p class="section-copy-modern text-start mx-0 mt-3">
+                        Το eMotion δεν περιορίζεται στην απλή προβολή εκπαιδευτικού υλικού.
+                        Συνδέει τη μαθησιακή πορεία με πραγματικά δεδομένα αλληλεπίδρασης
+                        και προσαρμόζει το περιεχόμενο με βάση τα συναισθήματα και τις ενέργειες του εκάστοτε μαθητή.
+                    </p>
+
+                    <div class="row g-3 mt-2">
+                        <div class="col-md-6">
+                            <div class="soft-info-card h-100">
+                                <h4>Πρόοδος ανά κεφάλαιο</h4>
+                                <p>
+                                    Η πρόοδος σε κάθε ενότητα υπολογίζεται με βάση
+                                    την ολοκλήρωση της θεωρίας και των δραστηριοτήτων αυτοαξιολόγησης.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="soft-info-card h-100">
+                                <h4>Ζωντανή υποστήριξη</h4>
+                                <p>
+                                    Κατά τη διάρκεια του μαθήματος εμφανίζονται άνατροφοδοτήσεις από το σύστημα 
+                                    για το τρέχον συναίσθημα που έχει αντιληφθεί
+                                    και την προτεινόμενη ενέργεια υποστήριξης.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="soft-info-card h-100">
+                                <h4>Προσαρμοστικό υλικό</h4>
+                                <p>
+                                    Η θεωρία και οι δραστηριότητες μεταβάλλονται δυναμικά,
+                                    ανάλογα με την απογοήτευση, το άγχος, την κόπωση ή την αυτοπεποίθηση
+                                    που νιώθει ο εκπαιδευόμενος.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="soft-info-card h-100">
+                                <h4>Αναλυτικά στοιχεία</h4>
+                                <p>
+                                    Οι βαθμοί και γενικά η πρόοδος των εκπαιδευόμενων αποθηκεύονται
+                                    ώστε οι μαθητές και οι καθηγητές
+                                    να έχουν εικόνα για την πρόοδο, την επίδοση και την συναισθηματική τους πορεία.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-5">
+                <div class="glass-side-panel h-100">
+                    <h3 class="mt-3">Παράδειγμα προσαρμογής</h3>
+
+                    <div class="timeline-stack mt-4">
+                        <div class="timeline-item-modern">
+                            <span class="timeline-dot"></span>
+                            <div>
+                                <h5>Ο μαθητής δυσκολεύεται</h5>
+                                <p>
+                                    Το σύστημα εντοπίζει αρκετές λανθασμένες απαντήσεις,
+                                    αυξημένο χρόνο επίλυσης ή επαναλαμβανόμενες προσπάθειες.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item-modern">
+                            <span class="timeline-dot"></span>
+                            <div>
+                                <h5>Η πλατφόρμα αναλύει τα δεδομένα</h5>
+                                <p>
+                                    Ο μηχανισμός εκτιμά πιθανή απογοήτευση ή άγχος
+                                    και επιστρέφει την προτεινόμενη παρέμβαση και τους λόγους κατά τους οποίους λήφθηκε αυτή η απόφαση. 
+                                    Επίσης δείχνει και την ακρίβεια του συσήματος στον εντοπισμό του συναισθήματος.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item-modern">
+                            <span class="timeline-dot"></span>
+                            <div>
+                                <h5>Το μάθημα προσαρμόζεται</h5>
+                                <p>
+                                    Ανάλογα το συναίσθημα του εκπαιδευόμενου εμφανίζεται απλοποιημένη θεωρία, καθοδηγητικό υλικό,
+                                    σύνοψη του μαθήματος ή ερωτήσεις με διαφορετικό επίπεδο δυσκολίας.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#lessons" class="btn btn-outline-glass w-100 mt-4 py-3">
+                        Δες τις ενότητες
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="lessons" class="container py-5">
+        <div class="section-heading-wrap text-center mb-5">
+            <h2 class="section-title-modern">Ενότητες Μαθήματος</h2>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="lesson-card h-100">
+                    <span class="lesson-tag">Κεφάλαιο 01</span>
+                    <h4>Ανάλυση Προβλήματος</h4>
+                    <p>
+                        Εισαγωγή στην κατανόηση προβλήματος, στα δεδομένα,
+                        στα ζητούμενα και στα βασικά βήματα επίλυσης.
+                    </p>
+
+                    @if (User.Identity?.IsAuthenticated ?? false)
+                    {
+                        <a asp-controller="Student" asp-action="Chapter1" class="lesson-link">Άνοιγμα ενότητας</a>
+                    }
+                    else
+                    {
+                        <a asp-area="Identity" asp-page="/Account/Login" class="lesson-link">Σύνδεση για πρόσβαση</a>
+                    }
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="lesson-card h-100">
+                    <span class="lesson-tag">Κεφάλαιο 02</span>
+                    <h4>Βασικές Έννοιες Αλγορίθμων</h4>
+                    <p>
+                        Η έννοια του αλγορίθμου και η ανάπτυξη του διαγράμματος ροής.
+                    </p>
+
+                    @if (User.Identity?.IsAuthenticated ?? false)
+                    {
+                        <a asp-controller="Student" asp-action="Chapter2" class="lesson-link">Άνοιγμα ενότητας</a>
+                    }
+                    else
+                    {
+                        <a asp-area="Identity" asp-page="/Account/Login" class="lesson-link">Σύνδεση για πρόσβαση</a>
+                    }
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="lesson-card h-100">
+                    <span class="lesson-tag">Κεφάλαιο 03</span>
+                    <h4>Βασικές Έννοιες Γλώσσας</h4>
+                    <p>
+                        Εισαγωγή σε μεταβλητές, σταθερές, εντολές, τύπους δεδομένων
+                        και βασικά στοιχεία της ΓΛΩΣΣΑΣ.
+                    </p>
+
+                    @if (User.Identity?.IsAuthenticated ?? false)
+                    {
+                        <a asp-controller="Student" asp-action="Chapter3" class="lesson-link">Άνοιγμα ενότητας</a>
+                    }
+                    else
+                    {
+                        <a asp-area="Identity" asp-page="/Account/Login" class="lesson-link">Σύνδεση για πρόσβαση</a>
+                    }
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="lesson-card h-100">
+                    <span class="lesson-tag">Κεφάλαιο 04</span>
+                    <h4>Δομή Επιλογής</h4>
+                    <p>
+                        Συγκριτικοί τελεστές, λογικές εκφράσεις, δομή επιλογής και η εντολή ΕΠΙΛΕΞΕ.
+                    </p>
+
+                    @if (User.Identity?.IsAuthenticated ?? false)
+                    {
+                        <a asp-controller="Student" asp-action="Chapter4" class="lesson-link">Άνοιγμα ενότητας</a>
+                    }
+                    else
+                    {
+                        <a asp-area="Identity" asp-page="/Account/Login" class="lesson-link">Σύνδεση για πρόσβαση</a>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="emotion-engine" class="container py-5 emotion-engine-home">
+        <div class="section-heading-wrap text-center mb-5">
+            <h2 class="section-title-modern mt-3">
+                Μηχανισμός Ανάλυσης Συναισθημάτων
+            </h2>
+        </div>
+
+        <div class="row g-4 align-items-stretch">
+            <div class="col-lg-4">
+                <article class="modern-feature-card h-100 engine-home-card">
+                    <div class="feature-number">01</div>
+
+                    <h3>Συλλογή Δεδομένων</h3>
+
+                    <p>
+                        Σε κάθε ενότητα αποθηκεύονται δραστηριότητες όπως προβολή θεωρίας,
+                        προβολή σχολικού βιβλίου και ολοκλήρωση κουίζ, μαζί με μετρήσεις χρόνου,
+                        απαντήσεων και συνολικής αλληλεπίδρασης.
+                    </p>
+
+                    <div class="engine-chip-list mt-4">
+                        <span>Χρόνος θεωρίας</span>
+                        <span>Χρόνος κουίζ</span>
+                        <span>Λανθασμένες απαντήσεις</span>
+                        <span>Αλλαγές επιλογών</span>
+                        <span>Προσπάθειες</span>
+                        <span>Χρόνος αδράνειας</span>
+                        <span>Clicks σε υλικό</span>
+                        <span>Αυτοαναφορά συναισθήματος</span>
+                    </div>
+                </article>
+            </div>
+
+            <div class="col-lg-4">
+                <article class="modern-feature-card h-100 engine-home-card engine-home-card-center">
+                    <div class="feature-number">02</div>
+
+                    <h3>Κανόνες Ανάλυσης</h3>
+
+                    <p>
+                        Ο μηχανισμός συνδυάζει την επίδοση με στοιχεία συμπεριφοράς.
+                        Για παράδειγμα, πολλά λάθη και αυξημένος χρόνος οδηγούν σε υποστήριξη,
+                        ενώ υψηλή επίδοση με λίγα λάθη ενεργοποιεί πιο απαιτητικές δραστηριότητες.
+                    </p>
+
+                    <div class="engine-mini-flow mt-4">
+                        <div>Δεδομένα Δραστηριότητας</div>
+                        <span>→</span>
+                        <div>Κανόνες Ανάλυσης</div>
+                        <span>→</span>
+                        <div>Προτεινόμενη Παρέμβαση</div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="col-lg-4">
+                <article class="modern-feature-card h-100 engine-home-card">
+                    <div class="feature-number">03</div>
+
+                    <h3>Προσαρμογή Περιεχομένου</h3>
+
+                    <p>
+                        Με βάση τη μαθησιακή συμπεριφορά του χρήστη,
+                        το σύστημα προσαρμόζει δυναμικά τη θεωρία,
+                        τις δραστηριότητες και την υποστηρικτική καθοδήγηση.
+                    </p>
+
+                    <div class="engine-emotion-list mt-4">
+                        <span>Ουδέτερη πορεία</span>
+                        <span>Αυτοπεποίθηση</span>
+                        <span>Άγχος / αβεβαιότητα</span>
+                        <span>Απογοήτευση</span>
+                        <span>Κόπωση</span>
+                        <span>Αδράνεια</span>
+                    </div>
+                </article>
+            </div>
+        </div>
+
+      
+
+    </section>
+
+    <footer class="simple-emotion-footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>eMotion</h3>
+
+                <p>
+                    Το eMotion συνδυάζει εκπαιδευτικό περιεχόμενο, κουίζ,
+                    παρακολούθηση προόδου και ανάλυση αλληλεπίδρασης για
+                    πιο προσαρμοσμένη μαθησιακή υποστήριξη.
+                </p>
+
+                <div class="footer-socials">
+                    <a href="#">f</a>
+                    <a href="#">in</a>
+                    <a href="#">x</a>
+                    <a href="#">▶</a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>Σύνδεσμοι</h3>
+
+                <a asp-controller="Home" asp-action="Index">Αρχική</a>
+                <a href="#how-it-works">Πώς λειτουργεί</a>
+                <a href="#features">Πλεονεκτήματα</a>
+                <a href="#emotion-engine">Μηχανισμός Ανάλυσης</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>Μαθήματα</h3>
+
+                <a asp-controller="Student" asp-action="Chapter1">Κεφάλαιο 1</a>
+                <a asp-controller="Student" asp-action="Chapter2">Κεφάλαιο 2</a>
+                <a asp-controller="Student" asp-action="Chapter3">Κεφάλαιο 3</a>
+                <a asp-controller="Student" asp-action="Chapter4">Κεφάλαιο 4</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>Επικοινωνία</h3>
+
+                <p>📞 (+30) 23510 31111</p>
+                <p>✉ eMotion_platform1@gmail.com</p>
+                <p>📍 Αθήνα, Ελλάδα</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            Copyright © 2026 eMotion | All Rights Reserved
+        </div>
+    </footer>
+</div>

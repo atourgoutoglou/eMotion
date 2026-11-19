@@ -1,0 +1,363 @@
+﻿@model eMotion.Models.ViewModels.StudentProgressViewModel
+
+@{
+    ViewData["Title"] = "Τα Μαθήματά μου";
+
+    var ch1 = Model.Chapters.FirstOrDefault(c => c.ChapterName == "Chapter1");
+    var ch2 = Model.Chapters.FirstOrDefault(c => c.ChapterName == "Chapter2");
+    var ch3 = Model.Chapters.FirstOrDefault(c => c.ChapterName == "Chapter3");
+    var ch4 = Model.Chapters.FirstOrDefault(c => c.ChapterName == "Chapter4");
+
+    var nextChapter = Model.Chapters
+        .OrderBy(c => c.ChapterName)
+        .FirstOrDefault(c => !c.Completed);
+
+    var nextChapterAction = nextChapter?.ChapterName ?? "Completion";
+
+    var nextChapterTitle = nextChapter?.ChapterName switch
+    {
+        "Chapter1" => "Ανάλυση Προβλήματος",
+        "Chapter2" => "Βασικές Έννοιες Αλγορίθμων",
+        "Chapter3" => "Βασικές Έννοιες Γλώσσας",
+        "Chapter4" => "Δομή Επιλογής",
+        _ => "Τελική Αναφορά"
+    };
+}
+
+<section class="student-page-shell py-5">
+    <div class="container">
+
+        <div class="glass-panel premium-course-hero mb-5 p-5">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-7">
+
+                    <h1 class="course-hero-title mt-3">
+                        Τα Μαθήματά μου
+                    </h1>
+
+                    <p class="course-hero-text mt-3">
+                        Συνέχισε τη μελέτη σου μέσα από θεωρία, εκπαιδευτικό υλικό και κουίζ
+                        αυτοαξιολόγησης. Η πλατφόρμα παρακολουθεί την πρόοδό σου και προσαρμόζει
+                        τη μαθησιακή εμπειρία ανάλογα με την αλληλεπίδρασή σου.
+                    </p>
+
+                    <div class="course-actions">
+                        <a asp-controller="Student"
+                           asp-action="@nextChapterAction"
+                           class="course-action-btn course-action-primary">
+                            Συνέχισε τη μάθηση
+                        </a>
+
+                        <a asp-controller="Student"
+                           asp-action="Progress"
+                           class="course-action-btn course-action-primary">
+                            Αναλυτική Πρόοδος
+                        </a>
+
+                        <a asp-controller="Student"
+                           asp-action="MyQuestions"
+                           class="course-action-btn course-action-primary">
+                            Οι Απορίες μου
+                        </a>
+
+                        @if (Model.HasCompletedAllChapters)
+                        {
+                            <a asp-controller="Student"
+                               asp-action="Completion"
+                               class="course-action-btn course-action-primary">
+                                Τελική Αναφορά
+                            </a>
+                        }
+                    </div>
+                </div>
+
+                <div class="col-lg-5">
+                    <div class="continue-learning-card">
+                        <span class="continue-label">Επόμενο βήμα</span>
+
+                        <h3>@nextChapterTitle</h3>
+
+                        <p>
+                            Η πλατφόρμα σε οδηγεί στο επόμενο κεφάλαιο που χρειάζεται ολοκλήρωση.
+                        </p>
+
+                        <div class="continue-progress-box">
+                            <span>Συνολική πρόοδος</span>
+                            <strong>@Model.OverallCompletionPercentage%</strong>
+                        </div>
+
+                        <div class="progress-track mt-3">
+                            <div class="progress-fill progress-fill-success"
+                                 style="width:@Model.OverallCompletionPercentage%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @if (ViewBag.TeacherMessages != null)
+        {
+            <div class="glass-panel mb-5 p-4">
+                <div class="course-summary-head">
+                    <div>
+                        <span class="student-badge">Μηνύματα Εκπαιδευτικού</span>
+
+                        <h2 class="section-title mt-2 mb-1">
+                            Προσωπικές Οδηγίες
+                        </h2>
+
+                        <p class="section-text mb-0">
+                            Εδώ εμφανίζονται μηνύματα και παρεμβάσεις από τον εκπαιδευτικό σου.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    @foreach (var msg in ViewBag.TeacherMessages)
+                    {
+                        <div class="completion-alert mb-3">
+                            <strong>@msg.CreatedAt.ToString("dd/MM/yyyy HH:mm")</strong>
+                            <p class="mb-0 mt-2">@msg.Message</p>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+
+        <div class="glass-panel mb-5 p-4">
+            <div class="course-summary-head">
+                <div>
+                    <h2 class="section-title mt-2 mb-1">
+                        Συνολική Πρόοδος
+                    </h2>
+
+                    <p class="section-text mb-0">
+                        Η πρόοδος υπολογίζεται με βάση την ολοκλήρωση θεωρίας,
+                        βιβλίου και κουίζ σε κάθε κεφάλαιο.
+                    </p>
+                </div>
+
+                <div class="course-summary-value">
+                    @Model.OverallCompletionPercentage%
+                </div>
+            </div>
+
+            <div class="progress-track mt-4">
+                <div class="progress-fill progress-fill-success"
+                     style="width:@Model.OverallCompletionPercentage%;"></div>
+            </div>
+
+            <div class="course-summary-meta mt-4">
+                <div class="course-mini-stat">
+                    <span class="course-mini-label">Ολοκλήρωση</span>
+                    <strong>@Model.OverallCompletionPercentage%</strong>
+                </div>
+
+                <div class="course-mini-stat">
+                    <span class="course-mini-label">Κεφάλαια με πρόοδο</span>
+                    <strong>@Model.Chapters.Count(c => c.CompletionPercentage > 0)/4</strong>
+                </div>
+
+                <div class="course-mini-stat">
+                    <span class="course-mini-label">Πρόσφατες αξιολογήσεις</span>
+                    <strong>@Model.RecentGrades.Count()</strong>
+                </div>
+            </div>
+        </div>
+
+        <div id="chapters" class="mb-4">
+            <h2 class="section-title mt-2 mb-1">
+                Ενότητες Μαθήματος
+            </h2>
+
+            <p class="section-text mb-0">
+                Κάθε κεφάλαιο περιλαμβάνει θεωρία, υποστηρικτικό υλικό και δραστηριότητες αυτοαξιολόγησης.
+            </p>
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-xl-3 col-md-6">
+                <div class="glass-card hover-lift course-chapter-card h-100">
+                    <div class="course-chapter-top">
+                        <div class="chapter-number">01</div>
+
+                        <span class="chapter-status">
+                            @(ch1?.Completed == true ? "Ολοκληρωμένο" : "Σε εξέλιξη")
+                        </span>
+                    </div>
+
+                    <h4 class="course-chapter-title">Ανάλυση Προβλήματος</h4>
+
+                    <p class="course-chapter-text">
+                        Κατανόηση προβλήματος, δεδομένα, ζητούμενα και βασικά στάδια επίλυσης.
+                    </p>
+
+                    <div class="progress-track progress-track-sm mb-3">
+                        <div class="progress-fill @(GetProgressClass(ch1?.CompletionPercentage ?? 0))"
+                             style="width:@(ch1?.CompletionPercentage ?? 0)%;"></div>
+                    </div>
+
+                    <div class="chapter-meta-line">
+                        <span>Πρόοδος</span>
+                        <strong>@(ch1?.CompletionPercentage ?? 0)%</strong>
+                    </div>
+
+                    <div class="chapter-meta-line">
+                        <span>Τελευταία κατάσταση</span>
+                        <strong>
+                            @GetEmotionGreek(ch1?.EmotionState)
+                        </strong>
+                    </div>
+
+                    <a asp-controller="Student"
+                       asp-action="Chapter1"
+                       class="btn btn-outline-light chapter-btn-pro mt-auto">
+                        Άνοιγμα Κεφαλαίου
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6">
+                <div class="glass-card hover-lift course-chapter-card h-100">
+                    <div class="course-chapter-top">
+                        <div class="chapter-number">02</div>
+
+                        <span class="chapter-status">
+                            @(ch2?.Completed == true ? "Ολοκληρωμένο" : "Σε εξέλιξη")
+                        </span>
+                    </div>
+
+                    <h4 class="course-chapter-title">Βασικές Έννοιες Αλγορίθμων</h4>
+
+                    <p class="course-chapter-text">
+                        Αλγόριθμοι, χαρακτηριστικά, κριτήρια και βασικές αρχές δημιουργίας λύσεων.
+                    </p>
+
+                    <div class="progress-track progress-track-sm mb-3">
+                        <div class="progress-fill @(GetProgressClass(ch2?.CompletionPercentage ?? 0))"
+                             style="width:@(ch2?.CompletionPercentage ?? 0)%;"></div>
+                    </div>
+
+                    <div class="chapter-meta-line">
+                        <span>Πρόοδος</span>
+                        <strong>@(ch2?.CompletionPercentage ?? 0)%</strong>
+                    </div>
+
+                    <div class="chapter-meta-line">
+                        <span>Τελευταία κατάσταση</span>
+                        <strong>@GetEmotionGreek(ch2?.EmotionState)</strong>
+                    </div>
+
+                    <a asp-controller="Student"
+                       asp-action="Chapter2"
+                       class="btn btn-outline-light chapter-btn-pro mt-auto">
+                        Άνοιγμα Κεφαλαίου
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6">
+                <div class="glass-card hover-lift course-chapter-card h-100">
+                    <div class="course-chapter-top">
+                        <div class="chapter-number">03</div>
+
+                        <span class="chapter-status">
+                            @(ch3?.Completed == true ? "Ολοκληρωμένο" : "Διαθέσιμο")
+                        </span>
+                    </div>
+
+                    <h4 class="course-chapter-title">Βασικές Έννοιες Γλώσσας</h4>
+
+                    <p class="course-chapter-text">
+                        Μεταβλητές, σταθερές, τύποι δεδομένων και βασικά στοιχεία της ΓΛΩΣΣΑΣ.
+                    </p>
+
+                    <div class="progress-track progress-track-sm mb-3">
+                        <div class="progress-fill @(GetProgressClass(ch3?.CompletionPercentage ?? 0))"
+                             style="width:@(ch3?.CompletionPercentage ?? 0)%;"></div>
+                    </div>
+
+                    <div class="chapter-meta-line">
+                        <span>Πρόοδος</span>
+                        <strong>@(ch3?.CompletionPercentage ?? 0)%</strong>
+                    </div>
+
+                    <div class="chapter-meta-line">
+                        <span>Τελευταία κατάσταση</span>
+                        <strong>@GetEmotionGreek(ch3?.EmotionState)</strong>
+                    </div>
+
+                    <a asp-controller="Student"
+                       asp-action="Chapter3"
+                       class="btn btn-outline-light chapter-btn-pro mt-auto">
+                        Άνοιγμα Κεφαλαίου
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6">
+                <div class="glass-card hover-lift course-chapter-card h-100">
+                    <div class="course-chapter-top">
+                        <div class="chapter-number">04</div>
+
+                        <span class="chapter-status">
+                            @(ch4?.Completed == true ? "Ολοκληρωμένο" : "Διαθέσιμο")
+                        </span>
+                    </div>
+
+                    <h4 class="course-chapter-title">Δομή Επιλογής</h4>
+
+                    <p class="course-chapter-text">
+                        Συγκριτικοί τελεστές, λογικές εκφράσεις, δομή επιλογής και η εντολή ΕΠΙΛΕΞΕ.
+                    </p>
+
+                    <div class="progress-track progress-track-sm mb-3">
+                        <div class="progress-fill @(GetProgressClass(ch4?.CompletionPercentage ?? 0))"
+                             style="width:@(ch4?.CompletionPercentage ?? 0)%;"></div>
+                    </div>
+
+                    <div class="chapter-meta-line">
+                        <span>Πρόοδος</span>
+                        <strong>@(ch4?.CompletionPercentage ?? 0)%</strong>
+                    </div>
+
+                    <div class="chapter-meta-line">
+                        <span>Τελευταία κατάσταση</span>
+                        <strong>@GetEmotionGreek(ch4?.EmotionState)</strong>
+                    </div>
+
+                    <a asp-controller="Student"
+                       asp-action="Chapter4"
+                       class="btn btn-outline-light chapter-btn-pro mt-auto">
+                        Άνοιγμα Κεφαλαίου
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @functions {
+        public string GetProgressClass(int progress)
+        {
+            if (progress >= 70) return "progress-fill-success";
+            if (progress >= 40) return "progress-fill-info";
+            if (progress >= 20) return "progress-fill-warning";
+            return "progress-fill-low";
+        }
+
+        public string GetEmotionGreek(string? emotion)
+        {
+            return emotion switch
+            {
+                "Neutral" => "Ουδέτερο Συναίσθημα",
+                "Confident" => "Αυτοπεποίθηση",
+                "Frustrated" => "Απογοητευμένος/η",
+                "Anxious" => "Αγχωμένος/η",
+                "Tired" => "Κουρασμένος/η",
+                "Idle" => "Αδρανής",
+                _ => emotion ?? "-"
+            };
+        }
+    }
+</section>

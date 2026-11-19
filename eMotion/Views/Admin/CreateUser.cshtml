@@ -1,0 +1,82 @@
+﻿@{
+    ViewData["Title"] = "Δημιουργία Χρήστη";
+}
+
+<section class="teacher-dashboard-page py-5">
+    <div class="container">
+
+        <div class="teacher-glass-panel mb-4">
+            <h1 class="teacher-hero-title mt-3">
+                Δημιουργία Νέου Χρήστη
+            </h1>
+
+            <p class="teacher-hero-text mt-3">
+                Ο διαχειριστής μπορεί να δημιουργήσει νέο λογαριασμό και να ορίσει τον ρόλο του χρήστη.
+            </p>
+        </div>
+
+        <div class="teacher-glass-panel">
+            <form asp-controller="Admin"
+                  asp-action="CreateUser"
+                  method="post">
+
+                @Html.AntiForgeryToken()
+
+                <div asp-validation-summary="All"
+                     class="text-danger mb-3">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label text-white">
+                        Email
+                    </label>
+
+                    <input type="email"
+                           name="email"
+                           class="teacher-input form-control"
+                           required />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label text-white">
+                        Κωδικός Πρόσβασης
+                    </label>
+
+                    <input type="password"
+                           name="password"
+                           class="teacher-input form-control"
+                           required />
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label text-white">
+                        Ρόλος
+                    </label>
+
+                    <select name="role"
+                            class="teacher-input form-control"
+                            required>
+                        <option value="Student">Μαθητής</option>
+                        <option value="Teacher">Καθηγητής</option>
+                        <option value="Admin">Διαχειριστής</option>
+                    </select>
+                </div>
+
+                <div class="d-flex gap-3 flex-wrap">
+                    <button type="submit"
+                            class="btn admin-btn-primary admin-action-btn">
+                        Δημιουργία Χρήστη
+                    </button>
+
+                    <a asp-controller="Admin"
+                       asp-action="Index"
+                       class="btn admin-btn-secondary admin-action-btn">
+                        Επιστροφή
+                    </a>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+</section>

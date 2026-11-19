@@ -1,0 +1,37 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+
+<div class="manage-nav-card">
+    <ul class="manage-nav-list">
+        <li>
+            <a class="manage-nav-link @(ManageNavPages.IndexNavClass(ViewContext))"
+               asp-page="./Index">
+                Προφίλ
+            </a>
+        </li>
+        <li>
+            <a class="manage-nav-link @(ManageNavPages.EmailNavClass(ViewContext))"
+               asp-page="./Email">
+                Email
+            </a>
+        </li>
+        <li>
+            <a class="manage-nav-link @(ManageNavPages.ChangePasswordNavClass(ViewContext))"
+               asp-page="./ChangePassword">
+                Κωδικός
+            </a>
+        </li>
+        <li>
+            <a class="manage-nav-link @(ManageNavPages.TwoFactorAuthenticationNavClass(ViewContext))"
+               asp-page="./TwoFactorAuthentication">
+                Δύο Βήματα Ταυτοποίησης
+            </a>
+        </li>
+        <li>
+            <a class="manage-nav-link @(ManageNavPages.PersonalDataNavClass(ViewContext))"
+               asp-page="./PersonalData">
+                Προσωπικά Δεδομένα
+            </a>
+        </li>
+    </ul>
+</div>

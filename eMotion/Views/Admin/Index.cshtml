@@ -1,0 +1,359 @@
+﻿@model eMotion.Models.ViewModels.AdminDashboardViewModel
+
+@{
+    ViewData["Title"] = "Πίνακας Διαχειριστή";
+}
+
+<section class="teacher-dashboard-page admin-dashboard-page py-5">
+    <div class="container">
+
+        <div class="teacher-glass-panel mb-5">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-8">
+
+                    <h1 class="teacher-hero-title mt-3">
+                        Πίνακας Διαχειριστή
+                    </h1>
+
+                    <p class="teacher-hero-text mt-3">
+                        Διαχειρίσου τους χρήστες της πλατφόρμας, παρακολούθησε τη δραστηριότητα των μαθητών
+                        και απέκτησε συνολική εικόνα της προόδου και της αλληλεπίδρασής τους στο eMotion.
+                    </p>
+                </div>
+
+                <div class="col-lg-4 text-center">
+                    <img src="~/images/admin.png"
+                         class="img-fluid teacher-hero-img"
+                         alt="Πίνακας Διαχειριστή">
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4 mb-4">
+            <div class="col-xl-3 col-md-6">
+                <div class="teacher-glass-card admin-stat-card text-center">
+                    <div class="teacher-stat-value">@Model.TotalUsers</div>
+                    <div class="teacher-stat-label">Σύνολο Χρηστών</div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6">
+                <div class="teacher-glass-card admin-stat-card text-center">
+                    <div class="teacher-stat-value">@Model.StudentsCount</div>
+                    <div class="teacher-stat-label">Μαθητές</div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6">
+                <div class="teacher-glass-card admin-stat-card text-center">
+                    <div class="teacher-stat-value">@Model.TeachersCount</div>
+                    <div class="teacher-stat-label">Καθηγητές</div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6">
+                <div class="teacher-glass-card admin-stat-card text-center">
+                    <div class="teacher-stat-value">@Model.AdminsCount</div>
+                    <div class="teacher-stat-label">Διαχειριστές</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4 mb-4">
+            <div class="col-xl-4 col-md-6">
+                <div class="teacher-glass-card admin-stat-card text-center">
+                    <div class="teacher-stat-value">@Model.TotalActivities</div>
+                    <div class="teacher-stat-label">Σύνολο Δραστηριοτήτων</div>
+                </div>
+            </div>
+
+            <div class="col-xl-4 col-md-6">
+                <div class="teacher-glass-card admin-stat-card text-center">
+                    <div class="teacher-stat-value">@Model.TotalMessages</div>
+                    <div class="teacher-stat-label">Μηνύματα Καθηγητών</div>
+                </div>
+            </div>
+
+            <div class="col-xl-4 col-md-12">
+                <div class="teacher-glass-card admin-stat-card text-center">
+                    <div class="teacher-stat-value">@Model.MostCommonEmotion</div>
+                    <div class="teacher-stat-label">Συχνότερο Συναίσθημα</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="teacher-glass-panel admin-action-panel mb-4">
+            <div>
+                <h3 class="text-white mb-1">Δημιουργία Χρήστη</h3>
+            </div>
+
+            <div class="admin-action-buttons">
+                <a asp-controller="Admin"
+                   asp-action="CreateUser"
+                   class="admin-btn-primary">
+                    + Δημιουργία Χρήστη
+                </a>
+            </div>
+        </div>
+
+        <div class="row g-4 mb-4">
+            <div class="col-lg-12">
+                <div class="teacher-glass-panel h-100">
+                    <h3 class="text-white mb-1">Αναλυτικά Στοιχεία Συναισθημάτων</h3>
+
+                    <div class="emotion-admin-list mt-4">
+                        <div class="emotion-admin-item">
+                            <div>
+                                <strong>Ουδέτερη κατάσταση</strong>
+                                <span>Κανονική αλληλεπίδραση</span>
+                            </div>
+
+                            <div class="emotion-admin-bar">
+                                <span style="width: 55%;"></span>
+                            </div>
+                        </div>
+
+                        <div class="emotion-admin-item">
+                            <div>
+                                <strong>Αυτοπεποίθηση</strong>
+                                <span>Υψηλή επιτυχία</span>
+                            </div>
+
+                            <div class="emotion-admin-bar">
+                                <span style="width: 48%;"></span>
+                            </div>
+                        </div>
+
+                        <div class="emotion-admin-item">
+                            <div>
+                                <strong>Άγχος</strong>
+                                <span>Συχνές αλλαγές απαντήσεων</span>
+                            </div>
+
+                            <div class="emotion-admin-bar">
+                                <span style="width: 72%;"></span>
+                            </div>
+                        </div>
+
+                        <div class="emotion-admin-item">
+                            <div>
+                                <strong>Απογοήτευση</strong>
+                                <span>Λανθασμένες προσπάθειες</span>
+                            </div>
+
+                            <div class="emotion-admin-bar">
+                                <span style="width: 38%;"></span>
+                            </div>
+                        </div>
+
+                        <div class="emotion-admin-item">
+                            <div>
+                                <strong>Κόπωση</strong>
+                                <span>Αυξημένη αδράνεια</span>
+                            </div>
+
+                            <div class="emotion-admin-bar">
+                                <span style="width: 42%;"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-8">
+                <div class="teacher-glass-panel h-100">
+                    <div class="admin-table-header mb-4">
+                        <div>
+                            <h3 class="text-white mb-1">Χρήστες Συστήματος</h3>
+
+                            <p class="teacher-panel-subtitle mb-0">
+                                Προβολή όλων των λογαριασμών και του ρόλου τους στην πλατφόρμα.
+                            </p>
+                        </div>
+
+                        <div class="admin-filters">
+                            <input type="text"
+                                   placeholder="Αναζήτηση χρήστη..."
+                                   id="adminUserSearch" />
+
+                            <select id="adminRoleFilter">
+                                <option value="">Όλοι οι ρόλοι</option>
+                                <option value="Μαθητής">Μαθητής</option>
+                                <option value="Καθηγητής">Καθηγητής</option>
+                                <option value="Διαχειριστής">Διαχειριστής</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    @if (Model.Users.Any())
+                    {
+                        <div class="table-responsive">
+                            <table class="table teacher-table admin-users-table align-middle" id="adminUsersTable">
+                                <thead>
+                                    <tr>
+                                        <th>Email</th>
+                                        <th>Όνομα Χρήστη</th>
+                                        <th>Ρόλος</th>
+                                        <th>Ενέργειες</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @foreach (var user in Model.Users)
+                                    {
+                                        var roleGreek = user.Role switch
+                                        {
+                                            "Admin" => "Διαχειριστής",
+                                            "Teacher" => "Καθηγητής",
+                                            "Student" => "Μαθητής",
+                                            _ => user.Role
+                                        };
+
+                                        var roleClass = user.Role switch
+                                        {
+                                            "Admin" => "admin-role",
+                                            "Teacher" => "teacher-role",
+                                            "Student" => "student-role",
+                                            _ => "neutral-role"
+                                        };
+
+                                        <tr>
+                                            <td class="fw-semibold">@user.Email</td>
+                                            <td>@user.UserName</td>
+
+                                            <td>
+                                                <span class="role-badge @roleClass">
+                                                    @roleGreek
+                                                </span>
+                                            </td>
+
+                                            <td>
+                                                <div class="admin-table-actions">
+                                                    <form asp-controller="Admin"
+                                                          asp-action="ChangeRole"
+                                                          method="post"
+                                                          class="admin-role-form">
+                                                        @Html.AntiForgeryToken()
+
+                                                        <input type="hidden"
+                                                               name="userId"
+                                                               value="@user.UserId" />
+
+                                                        <select name="newRole">
+                                                            <option value="Student" selected="@(user.Role == "Student")">
+                                                                Μαθητής
+                                                            </option>
+
+                                                            <option value="Teacher" selected="@(user.Role == "Teacher")">
+                                                                Καθηγητής
+                                                            </option>
+
+                                                            <option value="Admin" selected="@(user.Role == "Admin")">
+                                                                Διαχειριστής
+                                                            </option>
+                                                        </select>
+
+                                                        <button type="submit">
+                                                            Αλλαγή
+                                                        </button>
+                                                    </form>
+
+                                                    <form asp-controller="Admin"
+                                                          asp-action="DeleteUser"
+                                                          method="post">
+                                                        @Html.AntiForgeryToken()
+
+                                                        <input type="hidden"
+                                                               name="userId"
+                                                               value="@user.UserId" />
+
+                                                        <button type="submit"
+                                                                onclick="return confirm('Η διαγραφή είναι μόνιμη. Είστε σίγουροι ότι θέλετε να συνεχίσετε;');">
+                                                            Διαγραφή
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="teacher-glass-soft">
+                            Δεν υπάρχουν χρήστες στο σύστημα.
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="teacher-glass-panel h-100">
+                    <h3 class="text-white mb-3">Πρόσφατη Δραστηριότητα</h3>
+
+                    <p class="teacher-panel-subtitle">
+                        Οι τελευταίες καταγεγραμμένες ενέργειες μαθητών.
+                    </p>
+
+                    @if (Model.RecentActivities.Any())
+                    {
+                        <div class="d-flex flex-column gap-3">
+                            @foreach (var activity in Model.RecentActivities)
+                            {
+                                <div class="teacher-glass-soft">
+                                    @activity
+                                </div>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="teacher-glass-soft">
+                            Δεν υπάρχει πρόσφατη δραστηριότητα.
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        const searchInput = document.getElementById("adminUserSearch");
+        const roleFilter = document.getElementById("adminRoleFilter");
+        const table = document.getElementById("adminUsersTable");
+
+        function filterUsers() {
+            if (!searchInput || !roleFilter || !table) return;
+
+            const searchValue = searchInput.value.toLowerCase();
+            const roleValue = roleFilter.value;
+
+            const rows = table.querySelectorAll("tbody tr");
+
+            rows.forEach(row => {
+                const email = row.cells[0].innerText.toLowerCase();
+                const username = row.cells[1].innerText.toLowerCase();
+                const role = row.cells[2].innerText.trim();
+
+                const matchesSearch =
+                    email.includes(searchValue) ||
+                    username.includes(searchValue);
+
+                const matchesRole =
+                    roleValue === "" || role === roleValue;
+
+                row.style.display = matchesSearch && matchesRole ? "" : "none";
+            });
+        }
+
+        searchInput?.addEventListener("input", filterUsers);
+        roleFilter?.addEventListener("change", filterUsers);
+    </script>
+}

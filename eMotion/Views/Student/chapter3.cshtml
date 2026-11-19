@@ -1,0 +1,1743 @@
+﻿@{
+    ViewData["Title"] = "Κεφάλαιο 3 - Βασικές Έννοιες ΓΛΩΣΣΑΣ";
+}
+
+<section class="chapter-page py-5">
+    <div class="container">
+
+        <div class="chapter-hero-card mb-5">
+            <div class="row align-items-center g-4">
+
+                <div class="col-lg-8">
+
+                    <span class="pill-badge">
+                        Κεφάλαιο 3 • ΑΕΠΠ Γ' Λυκείου
+                    </span>
+
+                    <h1 class="chapter-hero-title mt-3">
+                        Βασικές Έννοιες ΓΛΩΣΣΑΣ
+                    </h1>
+
+                    <p class="chapter-hero-text mt-3">
+                        Στο τρίτο κεφάλαιο ο μαθητής γνωρίζει βασικές έννοιες της ΓΛΩΣΣΑΣ,
+                        όπως το αλφάβητο, οι τύποι δεδομένων, οι μεταβλητές, οι σταθερές,
+                        οι αριθμητικές εκφράσεις, η εντολή εκχώρησης και οι βασικές εντολές
+                        εισόδου και εξόδου.
+                    </p>
+
+                </div>
+
+                <div class="col-lg-4 text-center">
+
+                    <div class="chapter-hero-image-wrap">
+                        <img src="~/images/programming-course.png"
+                             class="chapter-hero-image"
+                             alt="Βασικές Έννοιες ΓΛΩΣΣΑΣ" />
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="glass-panel emotion-hud mb-4" id="emotionHud">
+
+            <div class="emotion-hud-top">
+
+                <div>
+
+                    <span class="emotion-chip neutral" id="emotionChip">
+                        Ουδέτερο
+                    </span>
+
+                    <h4 class="emotion-hud-title mt-3 mb-1">
+                        Μηχανισμός Ανίχνευσης Συναισθήματος
+                    </h4>
+
+                    <p class="emotion-hud-subtitle mb-0">
+                        Ζωντανή εκτίμηση συναισθηματικής κατάστασης.
+                    </p>
+
+                </div>
+
+                <div class="emotion-confidence-box">
+
+                    <div class="emotion-confidence-label">
+                        Βεβαιότητα
+                    </div>
+
+                    <div class="emotion-confidence-value"
+                         id="emotionConfidence">
+                        0%
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row g-3 mt-2">
+
+                <div class="col-md-4">
+
+                    <div class="glass-card h-100">
+
+                        <span class="mini-status-label">
+                            Τρέχον Συναίσθημα
+                        </span>
+
+                        <strong id="liveEmotionText">
+                            Ουδέτερο
+                        </strong>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="glass-card h-100">
+
+                        <span class="mini-status-label">
+                            Προσαρμοστική Δυσκολία
+                        </span>
+
+                        <strong id="liveDifficultyText">
+                            Μεσαία
+                        </strong>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="glass-card h-100">
+
+                        <span class="mini-status-label">
+                            Ενέργεια Υποστήριξης
+                        </span>
+
+                        <strong id="liveSupportText">
+                            Συνέχεια
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="adaptive-explanation mt-3"
+                 id="adaptiveExplanation">
+
+                Το σύστημα παρακολουθεί χρόνο, απαντήσεις, αλλαγές επιλογών και αδράνεια.
+
+            </div>
+
+        </div>
+
+        <div class="row g-4 mb-5">
+
+            <div class="col-lg-4">
+
+                <div class="glass-card-soft h-100">
+
+                    <h3 class="chapter-card-title">
+                        Τι θα μάθεις
+                    </h3>
+
+                    <ul class="chapter-list">
+                        <li>Από τι αποτελείται το αλφάβητο της ΓΛΩΣΣΑΣ</li>
+                        <li>Ποιοι είναι οι βασικοί τύποι δεδομένων</li>
+                        <li>Πώς δηλώνονται και χρησιμοποιούνται οι μεταβλητές και οι σταθερές</li>
+                        <li>Πώς λειτουργούν οι εντολές εκχώρησης, ΔΙΑΒΑΣΕ και ΓΡΑΨΕ</li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-4">
+
+                <div class="glass-card-soft h-100">
+
+                    <h3 class="chapter-card-title">
+                        Γιατί είναι σημαντικό
+                    </h3>
+
+                    <p class="chapter-card-text">
+                        Η σωστή χρήση τύπων δεδομένων, μεταβλητών και εντολών αποτελεί
+                        βασική προϋπόθεση για τη δημιουργία σωστών προγραμμάτων στη ΓΛΩΣΣΑ.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-4">
+
+                <div class="glass-card-soft h-100">
+
+                    <h3 class="chapter-card-title">
+                        Μαθησιακός στόχος
+                    </h3>
+
+                    <p class="chapter-card-text">
+                        Με την ολοκλήρωση της ενότητας, θα μπορείτε να αναγνωρίζετε
+                        τύπους δεδομένων, να χρησιμοποιείτε ορθά ονόματα μεταβλητών και να
+                        κατανοείτε βασικές εντολές προγραμμάτων.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="theoryPanel" class="glass-panel mb-5">
+
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+
+                <div>
+
+                    <span class="pill-badge">
+                        Παρουσίαση Μαθήματος
+                    </span>
+
+                    <h2 class="chapter-section-title mt-2 mb-1"
+                        id="theoryPanelTitle">
+
+                        PowerPoint Ενότητας
+
+                    </h2>
+
+                </div>
+
+            </div>
+
+            <div class="chapter-embed-box"
+                 onclick="saveStepActivity('Theory')">
+
+                <iframe id="theoryIframe"
+                        class="chapter-iframe"
+                        src="~/files/chapter3/chapter3.pdf">
+                </iframe>
+
+            </div>
+
+            <div class="mt-3 d-flex flex-wrap gap-3">
+
+                <a id="openPresentationBtn"
+                   href="~/files/chapter3/chapter3.pdf"
+                   target="_blank"
+                   class="btn btn-main chapter-action-btn"
+                   onclick="saveStepActivity('Theory')">
+
+                    Άνοιγμα Παρουσίασης
+
+                </a>
+
+                <a id="downloadPresentationBtn"
+                   href="~/files/chapter3/chapter3.pptx"
+                   class="btn btn-outline-light chapter-secondary-btn"
+                   download
+                   onclick="saveStepActivity('Theory')">
+
+                    Λήψη PowerPoint
+
+                </a>
+
+            </div>
+
+            <div id="theorySupportBox" class="mt-4 d-none"></div>
+
+        </div>
+
+        <div class="glass-panel mb-5">
+
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+
+                <div>
+
+                    <span class="pill-badge">
+                        Υποστηρικτικό Αρχείο
+                    </span>
+
+                    <h2 class="chapter-section-title mt-2 mb-1">
+                        Word Ενότητας
+                    </h2>
+
+                </div>
+
+            </div>
+
+            <div class="glass-card resource-card">
+
+                <div class="resource-icon">
+                    📝
+                </div>
+
+                <div class="resource-content">
+
+                    <h4 class="resource-title">
+                        Αρχείο Word - Κεφάλαιο 3
+                    </h4>
+
+                    <p class="resource-text">
+                        Το Word αρχείο της ενότητας είναι διαθέσιμο για λήψη.
+                    </p>
+
+                    <div class="mt-3 d-flex flex-wrap gap-3">
+
+                        <a href="~/files/chapter3/chapter3.docx"
+                           class="btn btn-outline-light chapter-secondary-btn"
+                           download
+                           onclick="saveStepActivity('Book')">
+
+                            Λήψη Word
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="bookPanel" class="glass-panel mb-5">
+
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+
+                <div>
+
+                    <span class="pill-badge">
+                        Υποστηρικτικό Υλικό
+                    </span>
+
+                    <h2 class="chapter-section-title mt-2 mb-1">
+                        Βιβλίο Μαθητή
+                    </h2>
+
+                    <p class="chapter-section-text mb-0">
+                        Πρόσβαση στο σχολικό βιβλίο του μαθήματος.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="glass-card resource-card">
+
+                <div class="resource-icon">
+                    📘
+                </div>
+
+                <div class="resource-content">
+
+                    <h4 class="resource-title">
+                        Βιβλίο Μαθητή - Κεφάλαιο 3
+                    </h4>
+
+                    <p class="resource-text">
+                        Μελέτησε το αντίστοιχο κεφάλαιο για περισσότερη θεωρία,
+                        παραδείγματα και επεξήγηση των βασικών εννοιών της ΓΛΩΣΣΑΣ.
+                    </p>
+
+                    <a href="https://ebooks.edu.gr/ebooks/v/pdf/8547/2560/22-0275-01_V2_Anaptyxi-Efarmogon-se-Programmatistiko-Perivallon_G-Lykeiou-SpOikPlir_Vivlio-Mathiti/"
+                       target="_blank"
+                       class="btn btn-outline-light chapter-secondary-btn"
+                       onclick="saveStepActivity('Book')">
+
+                        Προβολή Βιβλίου
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="glass-card-soft mb-4">
+
+            <h5 class="mb-3 text-white">
+                Πώς νιώθεις αυτή τη στιγμή;
+            </h5>
+
+            <div class="emotion-selector">
+                <button type="button" class="emotion-btn" data-self-emotion="Confident">😊 Σίγουρος/η</button>
+                <button type="button" class="emotion-btn" data-self-emotion="Anxious">😟 Αγχωμένος/η</button>
+                <button type="button" class="emotion-btn" data-self-emotion="Frustrated">😣 Απογοητευμένος/η</button>
+                <button type="button" class="emotion-btn" data-self-emotion="Tired">😴 Κουρασμένος/η</button>
+            </div>
+
+            <div id="selfReportResult"
+                 class="mt-3 small text-light">
+
+                Δεν έχει επιλεγεί ακόμη αυτοαναφορά συναισθήματος.
+
+            </div>
+
+        </div>
+
+        <div id="trueFalsePanel" class="glass-panel mb-5">
+
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+
+                <div>
+
+                    <span class="pill-badge">
+                        Αυτοαξιολόγηση
+                    </span>
+
+                    <h2 class="chapter-section-title mt-2 mb-1"
+                        id="trueFalseTitle">
+
+                        Ερωτήσεις Σωστού / Λάθους
+
+                    </h2>
+
+                </div>
+
+            </div>
+
+            <form class="glass-card" id="trueFalseForm"></form>
+
+        </div>
+
+        <div id="multipleChoicePanel" class="glass-panel mb-5">
+
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+
+                <div>
+
+                    <span class="pill-badge">
+                        Αυτοαξιολόγηση
+                    </span>
+
+                    <h2 class="chapter-section-title mt-2 mb-1"
+                        id="multipleChoiceTitle">
+
+                        Ερωτήσεις Πολλαπλής Επιλογής
+
+                    </h2>
+
+                </div>
+
+            </div>
+
+            <form class="glass-card" id="multipleChoiceForm"> </form>
+            <div class="mt-4 text-center">
+
+                <button type="button"
+                        class="btn btn-main chapter-action-btn"
+                        onclick="toggleQuizResults()"
+                        id="toggleQuizResultsBtn">
+
+                    Προβολή αποτελεσμάτων
+
+                </button>
+
+            </div>
+
+        </div>
+
+        <div id="quizResultsPanel"
+             class="glass-panel mb-5 d-none">
+
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4">
+
+                <div>
+
+                    <span class="pill-badge">
+                        Αποτελέσματα Quiz
+                    </span>
+
+                    <h2 class="chapter-section-title mt-2 mb-1">
+                        Αναλυτική Ανατροφοδότηση
+                    </h2>
+
+                    <p class="chapter-section-text mb-0">
+                        Δες τις σωστές και τις λανθασμένες απαντήσεις σου.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="quiz-results-summary"
+                 id="quizResultsSummary">
+            </div>
+
+            <div class="quiz-results-list mt-4"
+                 id="quizResultsList">
+            </div>
+
+        </div>
+
+        <div class="glass-panel mb-5">
+
+            <div class="d-flex flex-wrap gap-3 justify-content-center">
+
+                <button type="button"
+                        class="btn btn-main chapter-action-btn"
+                        onclick="submitFinalAnalysis()">
+
+                    Ολοκλήρωση Ενότητας & Ανάλυση
+
+                </button>
+
+                <a asp-controller="Student"
+                   asp-action="Index"
+                   class="btn btn-outline-light chapter-secondary-btn">
+
+                    Επιστροφή στα Μαθήματα
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="text-center mt-5">
+
+            <a asp-controller="Student"
+               asp-action="chapter4"
+               class="btn btn-main me-2">
+
+                Επόμενο Κεφάλαιο →
+
+            </a>
+
+            <a asp-controller="Student"
+               asp-action="chapter2"
+               class="btn btn-main me-2">
+
+                Προηγούμενο Κεφάλαιο
+
+            </a>
+
+            <a asp-controller="Student"
+               asp-action="Index"
+               class="btn btn-main me-2">
+
+                Πίσω στα Μαθήματα
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <div id="emotionOverlay"
+         class="emotion-overlay"
+         onclick="closeEmotionPanel()">
+    </div>
+
+    <aside id="emotionSidePanel"
+           class="emotion-side-panel">
+
+        <div class="emotion-side-panel-content">
+
+            <button type="button"
+                    class="emotion-panel-close"
+                    onclick="closeEmotionPanel()">
+
+                ✕
+
+            </button>
+
+            <span id="emotionPanelBadge"
+                  class="pill-badge">
+
+                Υποστηρικτικό feedback
+
+            </span>
+
+            <h3 id="emotionPanelTitle"
+                class="emotion-panel-title">
+            </h3>
+
+            <p id="emotionPanelMessage"
+               class="emotion-panel-message">
+            </p>
+
+            <div id="emotionPanelBody"
+                 class="emotion-panel-body">
+            </div>
+
+        </div>
+
+    </aside>
+
+</section>
+
+@section Scripts {
+    <script>
+        let pageStart = Date.now();
+        let quizStart = null;
+        let attempts = 0;
+        let changes = 0;
+        let materialClicks = 0;
+        let idleSeconds = 0;
+        let idleInterval = null;
+        let liveEmotionInterval = null;
+        let selectedSelfEmotion = null;
+        let currentQuizMode = "base";
+
+        let lastActivityTimestamp = Date.now();
+        let previousAnswers = {};
+        let lastAnalysisResult = null;
+        let adaptiveMode = false;
+
+        let questionNames = [];
+
+        const chapterName = "Chapter3";
+
+        const emotionLabels = {
+            Neutral: "Ουδέτερο",
+            Confident: "Σίγουρος/η",
+            Anxious: "Αγχωμένος/η",
+            Frustrated: "Απογοητευμένος/η",
+            Tired: "Κουρασμένος/η",
+            Idle: "Αδρανής"
+        };
+
+        const difficultyLabels = {
+            Easy: "Εύκολη",
+            Medium: "Μεσαία",
+            Hard: "Δύσκολη"
+        };
+
+        const supportActionLabels = {
+            Continue: "Συνέχεια",
+            ShowSummary: "Προβολή Σύνοψης",
+            ShowScaffoldedTheory: "Προβολή Υποστηρικτικής Θεωρίας",
+            ShowHints: "Προβολή Βοηθητικών Υποδείξεων",
+            ShowBreakSuggestion: "Πρόταση για Σύντομο Διάλειμμα",
+            UnlockChallenge: "Ξεκλείδωμα Πρόκλησης"
+        };
+
+        const theoryConfigs = {
+            default: {
+                title: "PowerPoint Ενότητας",
+                pdf: "/files/chapter3/chapter3.pdf",
+                pptx: "/files/chapter3/chapter3.pptx"
+            },
+            Frustrated: {
+                title: "Υποστηρικτική Θεωρία",
+                pdf: "/files/chapter3/chapter3_support.pdf",
+                pptx: "/files/chapter3/chapter3_support.pptx"
+            },
+            Anxious: {
+                title: "Καθοδηγητική Θεωρία",
+                pdf: "/files/chapter3/chapter3_guided.pdf",
+                pptx: "/files/chapter3/chapter3_guided.pptx"
+            },
+            Tired: {
+                title: "Σύντομη Επανάληψη",
+                pdf: "/files/chapter3/chapter3_guided.pdf",
+                pptx: "/files/chapter3/chapter3.pptx"
+            },
+            Idle: {
+                title: "Σύντομη Επανεκκίνηση",
+                pdf: "/files/chapter3/chapter3_guided.pdf",
+                pptx: "/files/chapter3/chapter3.pptx"
+            },
+            Confident: {
+                title: "PowerPoint Ενότητας",
+                pdf: "/files/chapter3/chapter3.pdf",
+                pptx: "/files/chapter3/chapter3.pptx"
+            }
+        };
+
+        const quizSets = {
+            base: {
+                trueFalseTitle: "Ερωτήσεις Σωστού / Λάθους",
+                trueFalseSubtitle: "Απάντησε στις παρακάτω ερωτήσεις για να ελέγξεις την κατανόησή σου.",
+                multipleChoiceTitle: "Ερωτήσεις Πολλαπλής Επιλογής",
+                multipleChoiceSubtitle: "Απάντησε στις παρακάτω ερωτήσεις για να ελέγξεις την κατανόησή σου.",
+                trueFalseQuestions: [
+                    {
+                        name: "q1",
+                        text: "1. Η εντολή εκχώρησης α ← 5 είναι σωστή.",
+                        options: [
+                            { id: "q1a", text: "Σωστό", value: "correct" },
+                            { id: "q1b", text: "Λάθος", value: "wrong" }
+                        ]
+                    },
+                    {
+                        name: "q2",
+                        text: "2. Η εντολή εκχώρησης α + β ← 12 είναι σωστή.",
+                        options: [
+                            { id: "q2a", text: "Σωστό", value: "wrong" },
+                            { id: "q2b", text: "Λάθος", value: "correct" }
+                        ]
+                    },
+                    {
+                        name: "q3",
+                        text: "3. Η εντολή εκχώρησης γ ← 'Κώστας' είναι σωστή.",
+                        options: [
+                            { id: "q3a", text: "Σωστό", value: "correct" },
+                            { id: "q3b", text: "Λάθος", value: "wrong" }
+                        ]
+                    },
+                    {
+                        name: "q4",
+                        text: "4. Η εντολή εκχώρησης α ← 5α είναι σωστή.",
+                        options: [
+                            { id: "q4a", text: "Σωστό", value: "wrong" },
+                            { id: "q4b", text: "Λάθος", value: "correct" }
+                        ]
+                    }
+                ],
+                multipleChoiceQuestions: [
+                    {
+                        name: "q5",
+                        text: "5. Ο αριθμός των παιδιών σε ποιον τύπο δεδομένων αντιστοιχεί;",
+                        options: [
+                            { id: "q5a", text: "ΑΚΕΡΑΙΕΣ", value: "correct" },
+                            { id: "q5b", text: "ΠΡΑΓΜΑΤΙΚΕΣ", value: "wrong" },
+                            { id: "q5c", text: "ΧΑΡΑΚΤΗΡΕΣ", value: "wrong" },
+                            { id: "q5d", text: "ΛΟΓΙΚΕΣ", value: "wrong" }
+                        ]
+                    }
+                ]
+            },
+
+            support: {
+                trueFalseTitle: "Απλοποιημένες Ερωτήσεις Σωστού / Λάθους",
+                trueFalseSubtitle: "Η ενότητα προσαρμόστηκε με πιο υποστηρικτικές ερωτήσεις.",
+                multipleChoiceTitle: "Υποστηρικτικές Ερωτήσεις Πολλαπλής Επιλογής",
+                multipleChoiceSubtitle: "Οι δραστηριότητες έγιναν πιο καθοδηγητικές και απλές.",
+                trueFalseQuestions: [
+                    {
+                        name: "q1",
+                        text: "1. Η εντολή εκχώρησης α ← 5 είναι σωστή.",
+                        options: [
+                            { id: "q1a", text: "Σωστό", value: "correct" },
+                            { id: "q1b", text: "Λάθος", value: "wrong" }
+                        ]
+                    },
+                    {
+                        name: "q2",
+                        text: "2. Η εντολή εκχώρησης α + β ← 12 είναι σωστή.",
+                        options: [
+                            { id: "q2a", text: "Σωστό", value: "wrong" },
+                            { id: "q2b", text: "Λάθος", value: "correct" }
+                        ]
+                    },
+                    {
+                        name: "q3",
+                        text: "3. Η εντολή εκχώρησης γ ← 'Κώστας' είναι σωστή.",
+                        options: [
+                            { id: "q3a", text: "Σωστό", value: "correct" },
+                            { id: "q3b", text: "Λάθος", value: "wrong" }
+                        ]
+                    },
+                    {
+                        name: "q4",
+                        text: "4. Η εντολή εκχώρησης α ← 5α είναι σωστή.",
+                        options: [
+                            { id: "q4a", text: "Σωστό", value: "wrong" },
+                            { id: "q4b", text: "Λάθος", value: "correct" }
+                        ]
+                    }
+                ],
+                multipleChoiceQuestions: [
+                    {
+                        name: "q5",
+                        text: "5. Ο αριθμός των παιδιών σε ποιον τύπο δεδομένων αντιστοιχεί;",
+                        options: [
+                            { id: "q5a", text: "ΑΚΕΡΑΙΕΣ", value: "correct" },
+                            { id: "q5b", text: "ΠΡΑΓΜΑΤΙΚΕΣ", value: "wrong" },
+                            { id: "q5c", text: "ΧΑΡΑΚΤΗΡΕΣ", value: "wrong" },
+                            { id: "q5d", text: "ΛΟΓΙΚΕΣ", value: "wrong" }
+                        ]
+                    }
+                ]
+            },
+
+            guided: {
+                trueFalseTitle: "Καθοδηγητικές Ερωτήσεις Σωστού / Λάθους",
+                trueFalseSubtitle: "Το περιεχόμενο παραμένει ίδιο, αλλά δίνεται πιο ασφαλής καθοδήγηση.",
+                multipleChoiceTitle: "Καθοδηγητικές Ερωτήσεις Πολλαπλής Επιλογής",
+                multipleChoiceSubtitle: "Δίνεται υποστήριξη χωρίς να αλλάξει σημαντικά η δυσκολία.",
+                trueFalseQuestions: [
+                    {
+                        name: "q1",
+                        text: "1. Το όνομα μεταβλητής Φ.Π.Α. είναι αποδεκτό από τη ΓΛΩΣΣΑ.",
+                        options: [
+                            { id: "q1a", text: "Σωστό", value: "wrong" },
+                            { id: "q1b", text: "Λάθος", value: "correct" }
+                        ]
+                    },
+                    {
+                        name: "q2",
+                        text: "2. Το όνομα μεταβλητής 2ΑΒ είναι αποδεκτό από τη ΓΛΩΣΣΑ.",
+                        options: [
+                            { id: "q2a", text: "Σωστό", value: "wrong" },
+                            { id: "q2b", text: "Λάθος", value: "correct" }
+                        ]
+                    },
+                    {
+                        name: "q3",
+                        text: "3. Το όνομα μεταβλητής ΒΑΘΜΟΣ είναι αποδεκτό από τη ΓΛΩΣΣΑ.",
+                        options: [
+                            { id: "q3a", text: "Σωστό", value: "correct" },
+                            { id: "q3b", text: "Λάθος", value: "wrong" }
+                        ]
+                    },
+                    {
+                        name: "q4",
+                        text: "4. Το όνομα μεταβλητής ΑΚΕΡΑΙΟΣ είναι αποδεκτό από τη ΓΛΩΣΣΑ.",
+                        options: [
+                            { id: "q4a", text: "Σωστό", value: "wrong" },
+                            { id: "q4b", text: "Λάθος", value: "correct" }
+                        ]
+                    }
+                ],
+                multipleChoiceQuestions: [
+                    {
+                        name: "q5",
+                        text: "5. Το όνομα ενός πελάτη σε ποιον τύπο δεδομένων αντιστοιχεί;",
+                        options: [
+                            { id: "q5a", text: "ΑΚΕΡΑΙΕΣ", value: "wrong" },
+                            { id: "q5b", text: "ΠΡΑΓΜΑΤΙΚΕΣ", value: "wrong" },
+                            { id: "q5c", text: "ΧΑΡΑΚΤΗΡΕΣ", value: "correct" },
+                            { id: "q5d", text: "ΛΟΓΙΚΕΣ", value: "wrong" }
+                        ]
+                    }
+                ]
+            },
+
+            challenge: {
+                trueFalseTitle: "Προχωρημένες Ερωτήσεις Σωστού / Λάθους",
+                trueFalseSubtitle: "Ενεργοποιήθηκε πιο απαιτητική μορφή εξάσκησης.",
+                multipleChoiceTitle: "Προχωρημένες Ερωτήσεις Πολλαπλής Επιλογής",
+                multipleChoiceSubtitle: "Η ενότητα προσαρμόστηκε σε υψηλότερο επίπεδο δυσκολίας.",
+                trueFalseQuestions: [
+                    {
+                        name: "q1",
+                        text: "1. Σε μία εντολή εκχώρησης του αποτελέσματος μίας έκφρασης σε μία μεταβλητή, η μεταβλητή και η έκφραση πρέπει να είναι του ίδιου τύπου.",
+                        options: [
+                            { id: "q1a", text: "Σωστό", value: "correct" },
+                            { id: "q1b", text: "Λάθος", value: "wrong" }
+                        ]
+                    },
+                    {
+                        name: "q2",
+                        text: "2. Ο τελεστής MOD χρησιμοποιείται για τον υπολογισμό του πηλίκου μίας διαίρεσης ακέραιων αριθμών.",
+                        options: [
+                            { id: "q2a", text: "Σωστό", value: "wrong" },
+                            { id: "q2b", text: "Λάθος", value: "correct" }
+                        ]
+                    },
+                    {
+                        name: "q3",
+                        text: "3. Κατά την εκτέλεση του προγράμματος η εντολή ΔΙΑΒΑΣΕ διακόπτει την εκτέλεσή του και περιμένει την εισαγωγή τιμών από το πληκτρολόγιο.",
+                        options: [
+                            { id: "q3a", text: "Σωστό", value: "correct" },
+                            { id: "q3b", text: "Λάθος", value: "wrong" }
+                        ]
+                    },
+                    {
+                        name: "q4",
+                        text: "4. Στην αριθμητική έκφραση Α + Β * Γ εκτελείται πρώτα η πρόσθεση και μετά ο πολλαπλασιασμός.",
+                        options: [
+                            { id: "q4a", text: "Σωστό", value: "wrong" },
+                            { id: "q4b", text: "Λάθος", value: "correct" }
+                        ]
+                    }
+                ],
+                multipleChoiceQuestions: [
+                    {
+                        name: "q5",
+                        text: "5. Η τιμή Ψευδής σε ποιον τύπο δεδομένων αντιστοιχεί;",
+                        options: [
+                            { id: "q5a", text: "ΑΚΕΡΑΙΕΣ", value: "wrong" },
+                            { id: "q5b", text: "ΠΡΑΓΜΑΤΙΚΕΣ", value: "wrong" },
+                            { id: "q5c", text: "ΧΑΡΑΚΤΗΡΕΣ", value: "wrong" },
+                            { id: "q5d", text: "ΛΟΓΙΚΕΣ", value: "correct" }
+                        ]
+                    }
+                ]
+            },
+
+            summary: {
+                trueFalseTitle: "Σύντομη Επαναληπτική Εξάσκηση",
+                trueFalseSubtitle: "Η ενότητα προσαρμόστηκε σε μορφή επανάληψης.",
+                multipleChoiceTitle: "Σύντομη Συνέχεια",
+                multipleChoiceSubtitle: "Παρέχεται πιο ήπια συνέχεια με βασικές ερωτήσεις.",
+                trueFalseQuestions: [
+                    {
+                        name: "q1",
+                        text: "1. Οι μεταβλητές μπορούν να αλλάζουν τιμή κατά την εκτέλεση του προγράμματος.",
+                        options: [
+                            { id: "q1a", text: "Σωστό", value: "correct" },
+                            { id: "q1b", text: "Λάθος", value: "wrong" }
+                        ]
+                    },
+                    {
+                        name: "q2",
+                        text: "2. Η εντολή ΓΡΑΨΕ χρησιμοποιείται για την εισαγωγή δεδομένων από το πληκτρολόγιο.",
+                        options: [
+                            { id: "q2a", text: "Σωστό", value: "wrong" },
+                            { id: "q2b", text: "Λάθος", value: "correct" }
+                        ]
+                    }
+                ],
+                multipleChoiceQuestions: [
+                    {
+                        name: "q3",
+                        text: "3. Ποιος τύπος δεδομένων δέχεται τις τιμές ΑΛΗΘΗΣ και ΨΕΥΔΗΣ;",
+                        options: [
+                            { id: "q3a", text: "ΑΚΕΡΑΙΕΣ", value: "wrong" },
+                            { id: "q3b", text: "ΠΡΑΓΜΑΤΙΚΕΣ", value: "wrong" },
+                            { id: "q3c", text: "ΧΑΡΑΚΤΗΡΕΣ", value: "wrong" },
+                            { id: "q3d", text: "ΛΟΓΙΚΕΣ", value: "correct" }
+                        ]
+                    }
+                ]
+            }
+        };
+
+        document.addEventListener("DOMContentLoaded", function () {
+            renderQuizSet("base");
+            setupEmotionButtons();
+            setupQuizTracking();
+            setupMaterialTracking();
+            setupIdleTracking();
+            startLiveEmotionPolling();
+
+            quizStart = Date.now();
+            analyzeEmotionLive();
+        });
+
+        function translateEmotion(emotion) {
+            return emotionLabels[emotion] || emotion || "Ουδέτερο";
+        }
+
+        function translateDifficulty(level) {
+            return difficultyLabels[level] || level || "Μεσαία";
+        }
+
+        function translateSupportAction(action) {
+            return supportActionLabels[action] || action || "Συνέχεια";
+        }
+
+        function setupEmotionButtons() {
+            const buttons = document.querySelectorAll(".emotion-btn");
+
+            buttons.forEach(btn => {
+                btn.addEventListener("click", function () {
+                    buttons.forEach(b => b.classList.remove("active"));
+                    this.classList.add("active");
+
+                    selectedSelfEmotion = this.dataset.selfEmotion || null;
+
+                    const resultBox = document.getElementById("selfReportResult");
+                    if (resultBox) {
+                        resultBox.innerText = `Καταγράφηκε αυτοαναφορά: ${translateEmotion(selectedSelfEmotion)}`;
+                    }
+
+                    registerUserActivity();
+                    analyzeEmotionLive();
+                });
+            });
+        }
+
+        function renderQuizSet(mode) {
+
+            currentQuizMode = mode;
+            const config = quizSets[mode] || quizSets.base;
+
+            const tfTitle = document.getElementById("trueFalseTitle");
+            const tfSubtitle = document.getElementById("trueFalseSubtitle");
+            const mcTitle = document.getElementById("multipleChoiceTitle");
+            const mcSubtitle = document.getElementById("multipleChoiceSubtitle");
+            const tfForm = document.getElementById("trueFalseForm");
+            const mcForm = document.getElementById("multipleChoiceForm");
+
+            if (tfTitle) tfTitle.innerText = config.trueFalseTitle;
+            if (tfSubtitle) tfSubtitle.innerText = config.trueFalseSubtitle;
+            if (mcTitle) mcTitle.innerText = config.multipleChoiceTitle;
+            if (mcSubtitle) mcSubtitle.innerText = config.multipleChoiceSubtitle;
+
+            if (tfForm) {
+                tfForm.innerHTML = buildQuizHtml(config.trueFalseQuestions);
+            }
+
+            if (mcForm) {
+                mcForm.innerHTML = buildQuizHtml(config.multipleChoiceQuestions);
+            }
+
+            questionNames = [
+                ...config.trueFalseQuestions.map(q => q.name),
+                ...config.multipleChoiceQuestions.map(q => q.name)
+            ];
+
+            const resultsPanel = document.getElementById("quizResultsPanel");
+            const resultsSummary = document.getElementById("quizResultsSummary");
+            const resultsList = document.getElementById("quizResultsList");
+
+            if (resultsPanel) {
+                resultsPanel.classList.add("d-none");
+            }
+
+            if (resultsSummary) {
+                resultsSummary.innerHTML = "";
+            }
+
+            if (resultsList) {
+                resultsList.innerHTML = "";
+            }
+
+            previousAnswers = {};
+            setupQuizTracking();
+        }
+
+        function buildQuizHtml(questions) {
+            return questions
+                .map(question => `
+                    <div class="quiz-question-block">
+
+                        <h5 class="quiz-question">
+                            ${question.text}
+                        </h5>
+
+                        ${question.options
+                        .map(option => `
+                                <div class="form-check quiz-option">
+
+                                    <input
+                                        class="form-check-input"
+                                        type="radio"
+                                        name="${question.name}"
+                                        id="${option.id}"
+                                        value="${option.value}">
+
+                                    <label
+                                        class="form-check-label"
+                                        for="${option.id}">
+                                        ${option.text}
+                                    </label>
+
+                                </div>
+                            `)
+                        .join("")}
+
+                    </div>
+                `)
+                .join("");
+        }
+
+        function setupQuizTracking() {
+            const inputs = document.querySelectorAll("input[type='radio'], input[type='checkbox'], select");
+
+            inputs.forEach(input => {
+                input.removeEventListener("change", handleQuizChange);
+                input.addEventListener("change", handleQuizChange);
+            });
+
+            const textInputs = document.querySelectorAll("textarea, input[type='text']");
+            textInputs.forEach(input => {
+                input.removeEventListener("input", handleTextInput);
+                input.addEventListener("input", handleTextInput);
+            });
+        }
+
+        function handleQuizChange() {
+            const key = this.name || this.id || Math.random().toString();
+            const currentValue = this.value;
+
+            if (previousAnswers[key] !== undefined && previousAnswers[key] !== currentValue) {
+                changes++;
+            }
+
+            previousAnswers[key] = currentValue;
+
+            if (!quizStart) {
+                quizStart = Date.now();
+            }
+
+            registerUserActivity();
+            analyzeEmotionLive();
+        }
+
+        function handleTextInput() {
+            registerUserActivity();
+        }
+
+        function setupMaterialTracking() {
+            const materialElements = document.querySelectorAll(
+                "a, iframe, .resource-card, .chapter-iframe, .chapter-action-btn, .chapter-secondary-btn"
+            );
+
+            materialElements.forEach(item => {
+                item.removeEventListener("click", handleMaterialClick);
+                item.addEventListener("click", handleMaterialClick);
+            });
+        }
+
+        function handleMaterialClick() {
+            materialClicks++;
+            registerUserActivity();
+        }
+
+        function setupIdleTracking() {
+            const activityEvents = ["mousemove", "keydown", "click", "scroll", "touchstart"];
+
+            activityEvents.forEach(eventName => {
+                document.addEventListener(eventName, registerUserActivity, true);
+            });
+
+            idleInterval = setInterval(() => {
+                const now = Date.now();
+                const inactiveFor = Math.floor((now - lastActivityTimestamp) / 1000);
+
+                idleSeconds = inactiveFor < 0 ? 0 : inactiveFor;
+
+                if (inactiveFor >= 90 && !adaptiveMode) {
+                    const idleResult = {
+                        emotion: "Idle",
+                        title: "Παρατηρήθηκε αδράνεια",
+                        message: "Φαίνεται ότι υπήρξε διακοπή στην αλληλεπίδραση. Μετά την ολοκλήρωση της ενότητας μπορεί να ενεργοποιηθεί προσαρμοσμένη συνέχεια.",
+                        confidence: 0.95,
+                        difficultyLevel: "Easy",
+                        supportAction: "ShowSummary",
+                        uiMode: "idle",
+                        reasons: ["Μεγάλος χρόνος αδράνειας"],
+                        recommendations: [
+                            "Σύντομη επανάληψη βασικών σημείων",
+                            "Επανεκκίνηση με πιο απλό βήμα"
+                        ]
+                    };
+
+                    updateEmotionHud(idleResult);
+                    applyAdaptiveUi(idleResult);
+                }
+            }, 1000);
+        }
+
+        function registerUserActivity() {
+            lastActivityTimestamp = Date.now();
+            idleSeconds = 0;
+        }
+
+        function calculateCorrectAnswers() {
+            let correct = 0;
+
+            document.querySelectorAll('input[type="radio"]:checked').forEach(input => {
+                if (input.value === "correct") {
+                    correct++;
+                }
+            });
+
+            return correct;
+        }
+
+        function calculateWrongAnswers() {
+            let wrong = 0;
+
+            document.querySelectorAll('input[type="radio"]:checked').forEach(input => {
+                if (input.value === "wrong") {
+                    wrong++;
+                }
+            });
+
+            return wrong;
+        }
+
+        function getAnsweredQuestionsCount() {
+            let answered = 0;
+
+            questionNames.forEach(name => {
+                const checked = document.querySelector(`input[name="${name}"]:checked`);
+                if (checked) {
+                    answered++;
+                }
+            });
+
+            return answered;
+        }
+
+        function getTotalQuestions() {
+            return questionNames.length;
+        }
+
+        function buildLiveActivitySnapshot(activityType = "") {
+            const correctAnswers = calculateCorrectAnswers();
+            const wrongAnswers = calculateWrongAnswers();
+            const answeredQuestions = getAnsweredQuestionsCount();
+
+            const totalPageTime = Math.floor((Date.now() - pageStart) / 1000);
+            const quizTime = quizStart
+                ? Math.floor((Date.now() - quizStart) / 1000)
+                : 0;
+
+            const theoryTime = Math.max(totalPageTime - quizTime, 0);
+
+            return {
+                ChapterName: chapterName,
+                ActivityType: activityType,
+                Score: correctAnswers,
+                CorrectAnswers: correctAnswers,
+                WrongAnswers: wrongAnswers,
+                Attempts: attempts,
+                TheoryTimeSeconds: theoryTime,
+                QuizTimeSeconds: quizTime,
+                AnswerChanges: changes,
+                MaterialClicks: materialClicks,
+                IdleTimeSeconds: idleSeconds,
+                SelfReportedEmotion: selectedSelfEmotion || "",
+                AnsweredQuestions: answeredQuestions,
+                TotalQuestions: getTotalQuestions()
+            };
+        }
+
+        function saveStepActivity(activityType) {
+            const data = buildLiveActivitySnapshot(activityType);
+
+            fetch('/Student/SaveActivity', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Αποτυχία αποθήκευσης βήματος");
+                    }
+
+                    console.log("Αποθηκεύτηκε βήμα:", activityType);
+                })
+                .catch(error => {
+                    console.error("Σφάλμα αποθήκευσης βήματος:", error);
+                });
+        }
+
+        function analyzeEmotionLive() {
+            const data = buildLiveActivitySnapshot("");
+
+            fetch('/Student/AnalyzeLive', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Αποτυχία ζωντανής ανάλυσης");
+                    }
+                    return response.json();
+                })
+                .then(result => {
+                    updateEmotionHud(result);
+                    applyAdaptiveUi(result);
+                })
+                .catch(error => {
+                    console.error("Σφάλμα ζωντανής ανάλυσης:", error);
+                });
+        }
+
+        function startLiveEmotionPolling() {
+            liveEmotionInterval = setInterval(() => {
+                if (!adaptiveMode) {
+                    analyzeEmotionLive();
+                }
+            }, 15000);
+        }
+
+        function updateEmotionHud(result) {
+            const emotionText = document.getElementById("liveEmotionText");
+            const difficultyText = document.getElementById("liveDifficultyText");
+            const supportText = document.getElementById("liveSupportText");
+            const confidenceText = document.getElementById("emotionConfidence");
+            const chip = document.getElementById("emotionChip");
+            const explanation = document.getElementById("adaptiveExplanation");
+
+            if (emotionText) emotionText.innerText = translateEmotion(result.emotion);
+            if (difficultyText) difficultyText.innerText = translateDifficulty(result.difficultyLevel);
+            if (supportText) supportText.innerText = translateSupportAction(result.supportAction);
+            if (confidenceText) confidenceText.innerText = `${Math.round((result.confidence || 0) * 100)}%`;
+
+            if (chip) {
+                chip.innerText = translateEmotion(result.emotion);
+                chip.className = "emotion-chip " + (result.uiMode || "neutral");
+            }
+
+            if (explanation) {
+                const reasons = (result.reasons || []).join(" • ");
+                explanation.innerText = reasons || result.message || "Δεν υπάρχουν ακόμη επαρκή δεδομένα.";
+            }
+        }
+
+        function applyAdaptiveUi(result) {
+            const body = document.body;
+
+            body.classList.remove(
+                "ui-mode-neutral",
+                "ui-mode-support",
+                "ui-mode-focus",
+                "ui-mode-calm",
+                "ui-mode-boost",
+                "ui-mode-idle"
+            );
+
+            body.classList.add(`ui-mode-${result.uiMode || "neutral"}`);
+
+            const quizPanels = document.querySelectorAll(".quiz-card");
+
+            quizPanels.forEach(panel => {
+                panel.classList.remove("quiz-easy", "quiz-medium", "quiz-hard");
+                panel.classList.add(`quiz-${(result.difficultyLevel || "Medium").toLowerCase()}`);
+            });
+        }
+
+        function openEmotionPanel() {
+            const panel = document.getElementById("emotionSidePanel");
+            const overlay = document.getElementById("emotionOverlay");
+
+            if (panel) panel.classList.add("open");
+            if (overlay) overlay.classList.add("show");
+        }
+
+        function closeEmotionPanel() {
+            const panel = document.getElementById("emotionSidePanel");
+            const overlay = document.getElementById("emotionOverlay");
+
+            if (panel) panel.classList.remove("open");
+            if (overlay) overlay.classList.remove("show");
+        }
+
+        function getBadgeText(emotion) {
+            switch (emotion) {
+                case "Confident":
+                    return "Θετική πορεία";
+                case "Frustrated":
+                    return "Χρειάζεται ενίσχυση";
+                case "Anxious":
+                    return "Υποστηρικτικό feedback";
+                case "Tired":
+                    return "Ρυθμός μάθησης";
+                case "Idle":
+                    return "Επανενεργοποίηση";
+                default:
+                    return "Σταθερή πορεία";
+            }
+        }
+
+        function getCurrentQuizQuestions() {
+
+            const currentSet =
+                quizSets[currentQuizMode] || quizSets.base;
+
+            return [
+                ...currentSet.trueFalseQuestions,
+                ...currentSet.multipleChoiceQuestions
+            ];
+        }
+
+        function toggleQuizResults() {
+
+            const panel = document.getElementById("quizResultsPanel");
+            const button = document.getElementById("toggleQuizResultsBtn");
+
+            if (!panel || !button) return;
+
+            if (!panel.classList.contains("d-none")) {
+
+                panel.classList.add("d-none");
+
+                button.innerText = "Προβολή αποτελεσμάτων quiz";
+
+                return;
+            }
+
+            showQuizResults();
+
+            panel.classList.remove("d-none");
+
+            button.innerText = "Απόκρυψη αποτελεσμάτων quiz";
+
+            panel.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        }
+
+        function showQuizResults() {
+
+            const summary = document.getElementById("quizResultsSummary");
+            const resultsList = document.getElementById("quizResultsList");
+
+            if (!summary || !resultsList) return;
+
+            const questions = getCurrentQuizQuestions();
+
+            let correctCount = 0;
+            let wrongCount = 0;
+            let unansweredCount = 0;
+
+            let html = "";
+
+            questions.forEach(question => {
+
+                const selected =
+                    document.querySelector(`input[name="${question.name}"]:checked`);
+
+                const correctOption =
+                    question.options.find(option => option.value === "correct");
+
+                let selectedText = "Δεν απαντήθηκε";
+
+                let isCorrect = false;
+
+                if (selected) {
+
+                    const selectedOption =
+                        question.options.find(option => option.id === selected.id);
+
+                    selectedText = selectedOption?.text || selected.value;
+
+                    isCorrect = selected.value === "correct";
+                }
+
+                if (isCorrect) {
+                    correctCount++;
+                }
+                else if (!selected) {
+                    unansweredCount++;
+                }
+                else {
+                    wrongCount++;
+                }
+
+                html += `
+            <div class="quiz-feedback-card ${isCorrect ? "correct" : "wrong"}">
+
+                <div class="quiz-feedback-question">
+                    ${question.text}
+                </div>
+
+                <div class="quiz-feedback-answer">
+                    <strong>Η απάντησή σου:</strong>
+                    <span>${selectedText}</span>
+                </div>
+
+                <div class="quiz-feedback-answer">
+                    <strong>Σωστή απάντηση:</strong>
+                    <span>${correctOption?.text || "-"}</span>
+                </div>
+
+                <div class="quiz-feedback-status ${isCorrect ? "correct" : "wrong"}">
+                    ${isCorrect
+                        ? "Σωστή απάντηση"
+                        : "Λανθασμένη απάντηση"}
+                </div>
+
+            </div>
+        `;
+            });
+
+            const total = questions.length;
+
+            const percentage =
+                total > 0
+                    ? Math.round((correctCount / total) * 100)
+                    : 0;
+
+            summary.innerHTML = `
+                        <div class="quiz-result-stat">
+                            <span>Σωστές απαντήσεις</span>
+                            <strong>${correctCount}/${total}</strong>
+                        </div>
+
+                        <div class="quiz-result-stat">
+                            <span>Λανθασμένες απαντήσεις</span>
+                            <strong>${wrongCount}</strong>
+                        </div>
+
+                        <div class="quiz-result-stat">
+                            <span>Αναπάντητες</span>
+                            <strong>${unansweredCount}</strong>
+                        </div>
+
+                        <div class="quiz-result-stat">
+                            <span>Ποσοστό επιτυχίας</span>
+                            <strong>${percentage}%</strong>
+                        </div>
+                    `;
+
+            resultsList.innerHTML = html;
+        }
+
+        function submitFinalAnalysis() {
+            attempts++;
+
+            const data = buildLiveActivitySnapshot("Quiz");
+
+            fetch('/Student/SaveActivity', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(async response => {
+                    if (!response.ok) {
+                        throw new Error("Αποτυχία αποθήκευσης");
+                    }
+
+                    const result = await response.json();
+
+                    lastAnalysisResult = result;
+
+                    updateEmotionHud(result);
+                    applyAdaptiveUi(result);
+                    showFeedback(result);
+                })
+                .catch(error => {
+                    console.error(error);
+                    alert("Παρουσιάστηκε σφάλμα κατά την αποθήκευση.");
+                });
+        }
+
+        function showFeedback(result) {
+            const badge = document.getElementById("emotionPanelBadge");
+            const title = document.getElementById("emotionPanelTitle");
+            const message = document.getElementById("emotionPanelMessage");
+            const body = document.getElementById("emotionPanelBody");
+
+            if (!badge || !title || !message || !body) {
+                console.warn("Δεν βρέθηκαν τα στοιχεία του πλευρικού πίνακα συναισθήματος.");
+                return;
+            }
+
+            badge.innerText = getBadgeText(result.emotion || "Neutral");
+            title.innerText = result.title || "Υποστηρικτικό feedback";
+            message.innerText = result.message || "";
+
+            const reasonsHtml = (result.reasons || [])
+                .map(reason => `<li>${reason}</li>`)
+                .join("");
+
+            const recommendationsHtml = (result.recommendations || [])
+                .map(recommendation => `<li>${recommendation}</li>`)
+                .join("");
+
+            body.innerHTML = `
+            <div class="theory-mini-file">
+
+                <p>
+                    <strong>Συναίσθημα:</strong>
+                    ${translateEmotion(result.emotion) || "-"}
+                </p>
+
+                <p>
+                    <strong>Βεβαιότητα:</strong>
+                    ${Math.round((result.confidence || 0) * 100)}%
+                </p>
+
+                <p>
+                    <strong>Προσαρμοστική ενέργεια:</strong>
+                    ${translateSupportAction(result.supportAction) || "-"}
+                </p>
+
+                <p>
+                    <strong>Προτεινόμενη δυσκολία:</strong>
+                    ${translateDifficulty(result.difficultyLevel) || "-"}
+                </p>
+
+                <div class="mt-3">
+                    <h6>Λόγοι απόφασης</h6>
+
+                    <ul>
+                        ${reasonsHtml}
+                    </ul>
+                </div>
+
+                <div class="adaptive-recommendations-box mt-3">
+                    <h6>Προτεινόμενες παρεμβάσεις</h6>
+
+                    <ul>
+                        ${recommendationsHtml}
+                    </ul>
+                </div>
+
+                <div class="mt-4 d-flex flex-wrap gap-2">
+
+                    <button
+                        type="button"
+                        class="btn btn-main chapter-action-btn"
+                        onclick="continueAdaptiveLesson()">
+                        Συνέχεια
+                    </button>
+
+                    <button
+                        type="button"
+                        class="btn btn-outline-light chapter-secondary-btn"
+                        onclick="closeEmotionPanel()">
+                        Κλείσιμο
+                    </button>
+
+                </div>
+
+            </div>
+        `;
+
+            openEmotionPanel();
+        }
+
+        function continueAdaptiveLesson() {
+            if (!lastAnalysisResult) return;
+
+            adaptiveMode = true;
+            applyAdaptiveLesson(lastAnalysisResult);
+            closeEmotionPanel();
+
+            const theoryPanel = document.getElementById("theoryPanel");
+            if (theoryPanel) {
+                theoryPanel.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+        }
+
+        function applyAdaptiveLesson(result) {
+            const emotion = result.emotion || "Neutral";
+            const action = result.supportAction || "Continue";
+
+            updateTheoryByEmotion(emotion, action);
+            updateQuizzesByEmotion(emotion, action);
+        }
+
+        function updateTheoryByEmotion(emotion, action) {
+            const config = theoryConfigs[emotion] || theoryConfigs.default;
+
+            const title = document.getElementById("theoryPanelTitle");
+            const iframe = document.getElementById("theoryIframe");
+            const openBtn = document.getElementById("openPresentationBtn");
+            const downloadBtn = document.getElementById("downloadPresentationBtn");
+            const supportBox = document.getElementById("theorySupportBox");
+
+            if (title) title.innerText = config.title;
+            if (iframe) iframe.src = config.pdf;
+            if (openBtn) openBtn.href = config.pdf;
+            if (downloadBtn) downloadBtn.href = config.pptx;
+
+            if (!supportBox) return;
+
+            supportBox.classList.remove("d-none");
+            supportBox.innerHTML = "";
+
+            if (emotion === "Frustrated" || action === "ShowScaffoldedTheory") {
+                supportBox.innerHTML = `
+                <div class="adaptive-inline-card">
+
+                    <h4>Υποστηρικτική θεωρία</h4>
+
+                    <p>
+                        Ενεργοποιήθηκε η υποστηρικτική εκδοχή της θεωρίας
+                        με πιο απλή παρουσίαση.
+                    </p>
+
+                </div>
+            `;
+
+                return;
+            }
+
+            if (emotion === "Anxious" || action === "ShowHints") {
+                supportBox.innerHTML = `
+                <div class="adaptive-inline-card">
+
+                    <h4>Καθοδηγητική θεωρία</h4>
+
+                    <p>
+                        Ενεργοποιήθηκε καθοδηγητική θεωρία με περισσότερη
+                        βήμα-βήμα υποστήριξη.
+                    </p>
+
+                </div>
+            `;
+
+                return;
+            }
+
+            if (emotion === "Tired" || action === "ShowBreakSuggestion") {
+                supportBox.innerHTML = `
+                <div class="adaptive-inline-card">
+
+                    <h4>Σύντομη επανάληψη</h4>
+
+                    <p>
+                        Προβάλλεται πιο ήπια και σύντομη εκδοχή της θεωρίας
+                        για σταδιακή συνέχεια.
+                    </p>
+
+                </div>
+            `;
+
+                return;
+            }
+
+            if (emotion === "Idle" || action === "ShowSummary") {
+                supportBox.innerHTML = `
+                <div class="adaptive-inline-card">
+
+                    <h4>Επανεκκίνηση ενότητας</h4>
+
+                    <p>
+                        Παρέχεται καθοδηγητική επανεκκίνηση πριν συνεχίσεις
+                        την εξάσκηση.
+                    </p>
+
+                </div>
+            `;
+
+                return;
+            }
+
+            if (emotion === "Confident" || action === "UnlockChallenge") {
+                supportBox.classList.add("d-none");
+                supportBox.innerHTML = "";
+                return;
+            }
+
+            supportBox.classList.add("d-none");
+        }
+
+        function updateQuizzesByEmotion(emotion, action) {
+            if (emotion === "Confident" || action === "UnlockChallenge") {
+                renderQuizSet("challenge");
+                return;
+            }
+
+            if (emotion === "Frustrated" || action === "ShowScaffoldedTheory") {
+                renderQuizSet("support");
+                return;
+            }
+
+            if (emotion === "Anxious" || action === "ShowHints") {
+                renderQuizSet("guided");
+                return;
+            }
+
+            if (emotion === "Tired" || action === "ShowBreakSuggestion" || emotion === "Idle" || action === "ShowSummary") {
+                renderQuizSet("summary");
+                return;
+            }
+
+            renderQuizSet("base");
+        }
+
+        window.addEventListener("beforeunload", function () {
+            if (idleInterval) clearInterval(idleInterval);
+            if (liveEmotionInterval) clearInterval(liveEmotionInterval);
+        });
+    </script>
+}

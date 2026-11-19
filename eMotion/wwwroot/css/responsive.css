@@ -1,0 +1,74 @@
+﻿@media (max-width: 991.98px) {
+    .hero-shell {
+        padding: 2rem;
+    }
+
+    .hero-visual-card {
+        min-height: 500px;
+    }
+
+    .mini-right {
+        right: 16px;
+        top: 18px;
+    }
+
+    .mini-left {
+        left: 16px;
+        bottom: 18px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .glass-panel,
+    .teacher-glass-panel,
+    .teacher-hero-card,
+    .teacher-panel,
+    .teacher-questions-hero,
+    .chapter-hero-card {
+        padding: 24px;
+        border-radius: 24px;
+    }
+
+    .hero-shell {
+        padding: 1.4rem;
+        border-radius: 28px;
+    }
+
+    .hero-display {
+        max-width: none;
+    }
+
+    .hero-visual-card {
+        min-height: auto;
+        padding: 1.2rem;
+    }
+
+    .emotion-panel-main {
+        max-width: 100%;
+        margin-top: 80px;
+    }
+
+    .floating-mini-card {
+        position: static;
+        width: 100%;
+        margin-top: 16px;
+    }
+
+    .hero-actions .btn {
+        width: 100%;
+    }
+
+    .chapter-iframe,
+    .chapter-embed-box {
+        min-height: 360px;
+    }
+
+    .resource-card {
+        flex-direction: column;
+    }
+
+    .emotion-side-panel {
+        width: 100%;
+        right: -100%;
+    }
+}
